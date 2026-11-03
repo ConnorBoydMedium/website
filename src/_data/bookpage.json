@@ -4,7 +4,7 @@
   "video_text": "The same reading, over a video call, wherever you are.",
   "house_party_text": "Private readings for each of your guests. Tell me your date, area and how many people, and I'll come back to you with details.",
   "calendar_intro": "Pick a day and time below. You'll get a confirmation by email straight away.",
-  "notice": "Need to change your booking? Let me know at least 24 hours before so I can offer your slot to someone else.",
+  "notice": "Need to change your booking? Any booking can be transferred to another slot with at least 24 hours' notice; with less notice, it may not be possible to transfer it.",
   "terms": {
     "title": "Before you book",
     "intro": "A video reading is a 30-minute one-to-one session over video, from wherever you feel comfortable. I work with mediumship, tarot and angel cards, and the reading follows whatever spirit brings forward: messages from loved ones, guidance on what you're going through, or both.",
@@ -20,7 +20,7 @@
       "I can't guarantee who will come through or what will be said. Spirit decides who steps forward.",
       "Readings are for guidance and comfort. They're not a substitute for medical, legal, financial or psychological advice.",
       "Payment is taken in full when you book.",
-      "Need to rearrange? Please let me know at least 24 hours before your reading."
+      "Changes and refunds: any booking can be transferred to another slot with at least 24 hours' notice. If you cancel with less notice than that, I may not be able to transfer your booking."
     ],
     "agree_label": "I'm 18 or over, and I've read and understood the above.",
     "button_label": "Continue to booking"
