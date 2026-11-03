@@ -39,7 +39,7 @@ nav: book
           <p class="reading__price"><span>{{ home.video_duration }}</span><span>{{ home.video_price }}</span><span>From your own home</span></p>
           <p>{{ bookpage.video_text }}</p>
         </div>
-        <a class="btn btn--gold" href="#calendar">{{ m.icon("calendar") }} Choose a time</a>
+        <a class="btn btn--gold" href="#calendar" data-terms-open>{{ m.icon("calendar") }} Choose a time</a>
       </article>
       <article class="reading">
         <h3>Spiritual house party</h3>
@@ -60,10 +60,12 @@ nav: book
       <h2 id="calendar-title">Book a video reading</h2>
       <p class="section__intro">{{ bookpage.calendar_intro }}</p>
     </div>
-    <div class="calendar">
-      <div class="calendly-inline-widget" data-url="{{ settings.calendly_url }}?primary_color=063726&hide_gdpr_banner=1"></div>
-      <noscript><p>Booking calendar needs JavaScript. <a href="{{ settings.calendly_url }}">Open the booking page</a>.</p></noscript>
+    {# Calendly loads here only after the visitor agrees to the terms #}
+    <div class="calendar-gate" data-calendly-gate data-url="{{ settings.calendly_url }}?primary_color=1c2f29&hide_gdpr_banner=1">
+      <p>Have a quick read of what to expect, then choose a day and time.</p>
+      <button class="btn btn--gold" type="button" data-terms-open>{{ m.icon("calendar") }} Choose a time</button>
+      <noscript><p>Booking needs JavaScript. You can also <a href="{{ settings.calendly_url }}">open the booking page</a>.</p></noscript>
     </div>
-    <p class="calendar__alt">Calendar not loading? <a href="{{ settings.calendly_url }}" target="_blank" rel="noopener">Open it in a new tab</a>. {{ bookpage.notice }}</p>
+    <p class="calendar__alt">Calendar not loading? <a href="{{ settings.calendly_url }}" target="_blank" rel="noopener" data-terms>Open it in a new tab</a>. {{ bookpage.notice }}</p>
   </div>
 </section>

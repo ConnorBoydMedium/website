@@ -150,6 +150,18 @@ content:
       - { name: house_party_text, label: "House party: description", type: text }
       - { name: calendar_intro, label: "Video booking calendar: intro", type: text }
       - { name: notice, label: "Changing a booking: note", type: text }
+      - name: terms
+        label: "'Before you book' pop-up (shown before the video booking calendar)"
+        type: object
+        fields:
+          - { name: title, label: Heading, type: string }
+          - { name: intro, label: "What the reading is", type: text }
+          - { name: needs_title, label: "'What you need' heading", type: string }
+          - { name: needs, label: "What you need (one per line)", type: string, list: true }
+          - { name: terms_title, label: "Terms heading", type: string }
+          - { name: terms, label: "Terms (one per line)", type: text, list: true }
+          - { name: agree_label, label: "Tick-box wording", type: string }
+          - { name: button_label, label: "Button wording", type: string }
 
   - name: eventspage
     label: Events page

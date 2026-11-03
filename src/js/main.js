@@ -83,6 +83,71 @@ if ('IntersectionObserver' in window) {
   reveals.forEach((el) => el.classList.add('is-visible'));
 }
 
+/* "Before you book" terms. Any [data-terms] link (a direct Calendly link) or
+   [data-terms-open] button opens the pop-up first; once the visitor ticks the box
+   and continues, the link opens, or the calendar loads on the Book page. */
+const termsDialog = document.querySelector('[data-terms-dialog]');
+if (termsDialog && typeof termsDialog.showModal === 'function') {
+  const agree = termsDialog.querySelector('[data-terms-agree]');
+  const go = termsDialog.querySelector('[data-terms-continue]');
+  const gate = document.querySelector('[data-calendly-gate]');
+  let pendingHref = null;
+  let opener = null;
+
+  function loadCalendly() {
+    if (!gate) return;
+    const widget = document.createElement('div');
+    widget.className = 'calendly-inline-widget';
+    widget.dataset.url = gate.dataset.url;
+    const wrap = document.createElement('div');
+    wrap.className = 'calendar';
+    wrap.append(widget);
+    gate.replaceWith(wrap);
+    if (window.Calendly) {
+      window.Calendly.initInlineWidget({ url: gate.dataset.url, parentElement: widget });
+    } else {
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.append(s);
+    }
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-terms], [data-terms-open]');
+    if (!trigger) return;
+    // the Book page calendar is already open once agreed, so let in-page buttons just scroll
+    if (trigger.matches('[data-terms-open]') && !document.querySelector('[data-calendly-gate]')) {
+      return;
+    }
+    e.preventDefault();
+    pendingHref = trigger.matches('[data-terms]') ? trigger.href : null;
+    opener = trigger;
+    agree.checked = false;
+    go.disabled = true;
+    termsDialog.showModal();
+  });
+
+  agree.addEventListener('change', () => { go.disabled = !agree.checked; });
+  termsDialog.querySelector('[data-terms-close]').addEventListener('click', () => termsDialog.close());
+  termsDialog.addEventListener('click', (e) => { if (e.target === termsDialog) termsDialog.close(); });
+  termsDialog.addEventListener('close', () => {
+    if (!go.dataset.going && opener) opener.focus({ preventScroll: true });
+    delete go.dataset.going;
+  });
+
+  go.addEventListener('click', () => {
+    go.dataset.going = '1';
+    termsDialog.close();
+    if (pendingHref) {
+      window.open(pendingHref, '_blank', 'noopener');
+    } else {
+      loadCalendly();
+    }
+  });
+}
+
 /* "WhatsApp to book" buttons on reading-day cards: fill in a ready-made
    message naming the event and date, built from the card itself. */
 const WHATSAPP_USERNAME = SITE.whatsapp || 'psychicmediumconnor';
@@ -195,7 +260,7 @@ if (cal) {
         ? `${DAYS[e.days[0].getDay()].slice(0, 3)}–${DAYS[e.days[e.days.length - 1].getDay()].slice(0, 3)}`
         : DAYS[d.getDay()].slice(0, 3);
       const link = e.video
-        ? `href="${calendlyDayUrl(d)}" target="_blank" rel="noopener"`
+        ? `href="${calendlyDayUrl(d)}" target="_blank" rel="noopener" data-terms`
         : `href="#${e.id}"`;
       return `<li><a class="weekend cal__item" ${link}>
         <span class="weekend__date"><span>${dow}</span><span class="weekend__day">${range}</span><span>${MONTHS[d.getMonth()].slice(0, 3)}</span></span>
@@ -223,7 +288,7 @@ if (cal) {
       const videoNote = videoCount
         ? `<p class="cal__video-note"><span class="cal__dot cal__dot--video" aria-hidden="true"></span>
             <span>Video readings on ${videoCount} ${videoCount === 1 ? 'day' : 'days'} this month.
-            <a href="${calendlyDayUrl(shown).split('&date')[0]}" target="_blank" rel="noopener">Choose a time</a></span></p>`
+            <a href="${calendlyDayUrl(shown).split('&date')[0]}" target="_blank" rel="noopener" data-terms>Choose a time</a></span></p>`
         : '';
       detailEl.innerHTML = `<h3 class="cal__detail-title">${heading}</h3>${
         list.length
@@ -285,7 +350,7 @@ if (cal) {
             </ul>
             <p>Pick a time that suits you. You'll get a confirmation by email straight away.</p>
             <div class="event__actions">
-              <a class="btn btn--gold" href="${calendlyDayUrl(d)}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg> Choose a time<span class="visually-hidden"> for a video reading (opens Calendly)</span></a>
+              <a class="btn btn--gold" href="${calendlyDayUrl(d)}" target="_blank" rel="noopener" data-terms><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg> Choose a time<span class="visually-hidden"> for a video reading (opens Calendly)</span></a>
             </div>`;
         } else {
           const card = document.getElementById(ev.id);

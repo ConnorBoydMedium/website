@@ -1949,6 +1949,73 @@ button.cal__day[aria-pressed="true"] .cal__dot--reading {
   }
 }
 
+/* Placeholder until the visitor agrees to the terms */
+.calendar-gate {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  padding: clamp(24px, 4vw, 40px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: linear-gradient(180deg, rgb(var(--surface-rgb) / 0.6), rgb(var(--bg-rgb) / 0.55));
+}
+
+.calendar-gate p {
+  margin: 0;
+}
+
+/* "Before you book" pop-up (shares the calendar pop-up's frame) */
+.terms-modal {
+  width: min(620px, calc(100% - 32px));
+}
+
+.terms-modal__heading {
+  margin: 22px 0 8px;
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.terms-modal__list {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.terms-modal__list li {
+  margin-bottom: 6px;
+}
+
+.terms-modal__list li::marker {
+  color: var(--gold);
+}
+
+.terms-modal__agree {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 12px;
+  margin: 24px 0 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgb(var(--surface-rgb) / 0.5);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.terms-modal__agree input {
+  width: 22px;
+  height: 22px;
+  margin: 1px 0 0;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 .calendar__alt {
   margin: 16px 0 0;
   font-size: 0.95rem;

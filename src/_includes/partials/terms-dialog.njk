@@ -1,0 +1,32 @@
+{# "Before you book" terms. Opens from any [data-terms] link or [data-terms-open] button;
+   Calendly only loads once the visitor ticks the box and continues. Text: src/_data/bookpage.json #}
+{% set t = bookpage.terms %}
+<dialog class="cal-modal terms-modal" data-terms-dialog aria-labelledby="terms-title">
+  <div class="cal-modal__inner">
+    <div class="cal-modal__head">
+      <h2 class="cal-modal__title" id="terms-title">{{ t.title }}</h2>
+      <button class="cal-modal__close" type="button" data-terms-close>
+        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        <span class="visually-hidden">Close</span>
+      </button>
+    </div>
+    <p>{{ t.intro }}</p>
+    <h3 class="terms-modal__heading">{{ t.needs_title }}</h3>
+    <ul class="terms-modal__list">
+      {% for item in t.needs %}<li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+    <h3 class="terms-modal__heading">{{ t.terms_title }}</h3>
+    <ul class="terms-modal__list">
+      {% for item in t.terms %}<li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+    <label class="terms-modal__agree">
+      <input type="checkbox" data-terms-agree>
+      <span>{{ t.agree_label }}</span>
+    </label>
+    <div class="event__actions">
+      <button class="btn btn--gold" type="button" data-terms-continue disabled>{{ t.button_label }}</button>
+    </div>
+  </div>
+</dialog>
