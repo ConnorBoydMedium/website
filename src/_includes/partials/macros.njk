@@ -1,0 +1,80 @@
+{# Shared building blocks used by all pages #}
+
+{% macro icon(name, cls="icon") %}<svg class="{{ cls }}" aria-hidden="true"><use href="#i-{{ name }}"/></svg>{% endmacro %}
+
+{# A tarot card face; title is optional #}
+{% macro tarot(iconName, title="") -%}
+<div class="tarot" aria-hidden="true"><span class="tarot__rays"></span><svg class="tarot__star"><use href="#i-sparkle"/></svg><svg class="tarot__icon"><use href="#i-{{ iconName }}"/></svg>{% if title %}<span class="tarot__title">{{ title }}</span>{% endif %}</div>
+{%- endmacro %}
+
+{# A card that turns over from its dove back as it scrolls into view #}
+{% macro flipCard(iconName, title="", cls="") -%}
+<div class="{{ cls }} flip" data-reveal aria-hidden="true">
+  <div class="flip__inner">
+    {{ tarot(iconName, title) }}
+    <div class="tarot tarot--back" aria-hidden="true"><svg class="tarot__icon"><use href="#i-dove"/></svg></div>
+  </div>
+</div>
+{%- endmacro %}
+
+{# One event card. The calendar, pop-ups and WhatsApp buttons read these cards. #}
+{% macro eventCard(e, showDirections=true) %}
+<article class="event" data-end="{{ e | endDate }}">
+  <div class="event__date">
+    <span>{{ e | dayLabel }}</span>
+    <span class="event__day">{{ e | dateRange }}</span>
+    <span class="event__month">{{ e | monthYear }}</span>
+  </div>
+  <div class="event__body">
+    <p class="event__type">{% if e.label %}{{ e.label }}{% elif e.type == "evening" %}Evening of mediumship{% else %}1-2-1 readings{% endif %}</p>
+    <h3>{{ e.title }}</h3>
+    <ul class="panel__meta">
+      {% if e.time %}<li>{{ icon("clock") }} {{ e.time }}</li>{% endif %}
+      {% if e.price %}<li>{{ icon("ticket") }} {{ e.price }}</li>{% endif %}
+      {% if e.address %}<li>{{ icon("pin") }} {{ e.address }}</li>{% endif %}
+    </ul>
+    {% if e.note %}<p>{{ e.note }}</p>{% endif %}
+    <div class="event__actions">
+      {% if e.type == "evening" and e.tickets_url %}
+      <a class="btn btn--gold" href="{{ e.tickets_url }}" target="_blank" rel="noopener">{{ icon("ticket") }} Book tickets<span class="visually-hidden"> for {{ e.title }}, {{ e | shortDate }} (opens Eventbrite)</span></a>
+      {% elif e.type == "reading" %}
+      <a class="btn btn--gold" href="https://wa.me/{{ settings.phone_international }}" target="_blank" rel="noopener" data-whatsapp-book>{{ icon("whatsapp") }} WhatsApp to book</a>
+      {% endif %}
+      {% if showDirections and e.address %}
+      <a class="btn btn--ghost" href="{{ e.address | mapsUrl }}" target="_blank" rel="noopener">{{ icon("pin") }} Get directions</a>
+      {% endif %}
+    </div>
+  </div>
+</article>
+{% endmacro %}
+
+{# The compact "Weekends I'm reading at" list #}
+{% macro weekendList(readings) %}
+<h4 class="weekends__title" id="weekends-title">Weekends I'm reading at</h4>
+{% if readings.length %}
+<ul class="weekends weekends--cols" aria-labelledby="weekends-title">
+  {% for e in readings %}
+  <li class="weekend" data-end="{{ e | endDate }}">
+    <span class="weekend__date"><span>{{ e | dayShortLabel }}</span><span class="weekend__day">{{ e | dateRange }}</span><span>{{ e | monthShort }}</span></span>
+    <span class="weekend__info"><strong>{{ e.title }}</strong><span>{{ e.list_line or e.address }}</span></span>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>New dates coming soon. Follow me on Facebook or Instagram to hear first.</p>
+{% endif %}
+{% endmacro %}
+
+{% macro whatsappGeneral() -%}
+https://wa.me/{{ settings.phone_international }}?text={{ "Hi Connor, I'd like to book a 1-2-1 reading at one of your weekend reading days." | urlencode }}
+{%- endmacro %}
+
+{% macro gallery(items) %}
+<div class="gallery">
+  {% for item in items %}
+  <figure>
+    <img src="{{ item.image }}" alt="{{ item.alt }}" sizes="(min-width: 760px) 25vw, 50vw">
+  </figure>
+  {% endfor %}
+</div>
+{% endmacro %}

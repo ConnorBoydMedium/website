@@ -1,0 +1,120 @@
+---
+layout: layouts/base.njk
+permalink: /events.html
+title: Events | Connor Boyd, Spiritual Medium
+description: Upcoming evenings of mediumship and private reading days with Connor Boyd.
+nav: events
+---
+{% import "partials/macros.njk" as m with context %}
+{% set readings = events | upcoming("reading") %}
+{% set evenings = events | upcoming("evening") %}
+
+<header class="page-head">
+  <div class="container">
+    {{ m.flipCard("candle", "", "page-head__card") }}
+    <h1>Events</h1>
+    <p>{{ eventspage.intro }}</p>
+  </div>
+</header>
+
+<!-- Calendar: built automatically from the event cards further down the page.
+     Video reading days come live from Calendly via /api/video-days. -->
+<script type="application/json" data-video-days>[]</script>
+<section class="section section--glow" aria-labelledby="calendar-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="calendar-title">Calendar</h2>
+      <p class="section__intro">{{ eventspage.calendar_intro }}</p>
+    </div>
+    <div class="cal" data-calendar hidden>
+      <div class="cal__board">
+        <div class="cal__head">
+          <button class="cal__nav" type="button" data-cal-prev>
+            {{ m.icon("chevron-left") }}
+            <span class="visually-hidden">Previous month</span>
+          </button>
+          <h3 class="cal__month" data-cal-title aria-live="polite"></h3>
+          <button class="cal__nav" type="button" data-cal-next>
+            {{ m.icon("chevron-right") }}
+            <span class="visually-hidden">Next month</span>
+          </button>
+        </div>
+        <div class="cal__weekdays" aria-hidden="true">
+          <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+        </div>
+        <div class="cal__days" data-cal-days></div>
+        <ul class="cal__legend">
+          <li><span class="cal__dot cal__dot--evening" aria-hidden="true"></span> Evening of mediumship</li>
+          <li><span class="cal__dot cal__dot--reading" aria-hidden="true"></span> 1-2-1 readings</li>
+          <li><span class="cal__dot cal__dot--video" aria-hidden="true"></span> Video readings</li>
+        </ul>
+      </div>
+      <div class="cal__detail" data-cal-detail aria-live="polite"></div>
+    </div>
+
+    <dialog class="cal-modal" data-cal-modal aria-labelledby="cal-modal-title">
+      <div class="cal-modal__inner">
+        <div class="cal-modal__head">
+          <h2 class="cal-modal__title" id="cal-modal-title" data-cal-modal-title></h2>
+          <button class="cal-modal__close" type="button" data-cal-modal-close>
+            {{ m.icon("close") }}
+            <span class="visually-hidden">Close</span>
+          </button>
+        </div>
+        <div data-cal-modal-body></div>
+      </div>
+    </dialog>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="upcoming-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="upcoming-title">Evenings of mediumship</h2>
+      <p class="section__intro">{{ eventspage.evenings_intro }}</p>
+    </div>
+    {% for e in evenings %}
+      {{ m.eventCard(e) }}
+    {% else %}
+      <p>New evenings coming soon.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section section--glow" aria-labelledby="weekends-events-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="weekends-events-title">Weekend 1-2-1 readings</h2>
+      <p class="section__intro">{{ eventspage.readings_intro }}</p>
+    </div>
+    {% for e in readings %}
+      {{ m.eventCard(e) }}
+    {% else %}
+      <p>New reading days coming soon.</p>
+    {% endfor %}
+    <div class="notice">
+      <p>{{ eventspage.follow_note }} <a href="{{ settings.facebook_url }}" target="_blank" rel="noopener">Facebook</a> or <a href="https://www.instagram.com/{{ settings.instagram_handle }}/" target="_blank" rel="noopener">Instagram</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="past-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="past-title">From recent evenings</h2>
+      <p class="section__intro">{{ eventspage.gallery_intro }}</p>
+    </div>
+    {{ m.gallery(gallery.events) }}
+  </div>
+</section>
+
+<section class="section book" aria-labelledby="host-title">
+  <div class="container">
+    <h2 id="host-title">Bring an evening to your venue</h2>
+    <p class="section__intro">{{ eventspage.host_intro }}</p>
+    <div class="book__actions">
+      <a class="btn btn--gold" href="mailto:{{ settings.email }}?subject=Event%20enquiry">Email about an event</a>
+      <a class="btn btn--ghost" href="/#work">How I work with venues</a>
+    </div>
+  </div>
+</section>

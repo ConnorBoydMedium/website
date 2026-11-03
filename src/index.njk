@@ -1,0 +1,270 @@
+---
+layout: layouts/base.njk
+permalink: /index.html
+title: Connor Boyd | Spiritual Medium
+description: Connor Boyd, psychic and spiritual medium. 1-2-1 readings, video readings, group events and spiritual house parties.
+nav: home
+---
+{% import "partials/macros.njk" as m with context %}
+{% set readings = events | upcoming("reading") %}
+{% set evenings = events | upcoming("evening") %}
+
+<!-- Hero: the reading table -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__intro">
+    <h1 id="hero-title" class="visually-hidden">Connor Boyd, Spiritual Medium</h1>
+    <img class="hero__logo" src="/assets/img/logo.jpg" width="900" height="900" alt="Connor Boyd, Spiritual Medium" fetchpriority="high" eleventy:ignore>
+    <p class="hero__tagline">{{ home.hero_tagline }}</p>
+    <p class="hero__sub">{{ home.hero_intro }}</p>
+    <div class="hero__actions">
+      <a class="btn btn--gold" href="/book.html">Book a reading</a>
+      <a class="btn btn--ghost" href="/events.html">See upcoming events</a>
+    </div>
+  </div>
+
+  <div class="table">
+    <ul class="fan" aria-label="Explore">
+      {% set fan = [
+        { icon: "eye", title: "The Reading", label: "Readings", href: "#offer", i: -2, lift: 22 },
+        { icon: "candle", title: "The Gathering", label: "Events", href: "/events.html", i: -1, lift: 6 },
+        { icon: "dove", title: "The Medium", label: "About me", href: "#about", i: 0, lift: 0 },
+        { icon: "sun", title: "The Host", label: "Work with me", href: "#work", i: 1, lift: 6 },
+        { icon: "key", title: "The Booking", label: "Book", href: "/book.html", i: 2, lift: 22 }
+      ] %}
+      {% for card in fan %}
+      <li class="fan__slot" style="--i:{{ card.i }};--lift:{{ card.lift }};--n:{{ loop.index0 }}">
+        <a class="fan__link" href="{{ card.href }}">
+          <span class="tarot" aria-hidden="true"><span class="tarot__rays"></span><svg class="tarot__star"><use href="#i-sparkle"/></svg><svg class="tarot__icon"><use href="#i-{{ card.icon }}"/></svg><span class="tarot__title">{{ card.title }}</span></span>
+          <span class="fan__label">{{ card.label }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<!-- What I offer -->
+<section class="section section--glow" id="offer" aria-labelledby="offer-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="offer-title">What I offer</h2>
+      <p class="section__intro">{{ home.offer_intro }}</p>
+    </div>
+
+    <div class="panels panels--two">
+      <article class="panel panel--span">
+        {{ m.flipCard("eye", "The Reading", "panel__card") }}
+        <div class="panel__head">
+          <span class="diamond" aria-hidden="true">{{ m.icon("sparkle") }}</span>
+          <h3><span style="white-space:nowrap">1-2-1</span> readings</h3>
+        </div>
+        <ul class="panel__meta">
+          <li>{{ m.icon("clock") }} {{ home.readings_duration }}</li>
+          <li>{{ m.icon("ticket") }} {{ home.readings_price }}</li>
+        </ul>
+        <p>{{ home.readings_text }}</p>
+        {{ m.weekendList(readings) }}
+        <div class="event__actions" style="align-items:center;gap:12px 24px">
+          <a class="btn btn--gold" href="{{ m.whatsappGeneral() }}" target="_blank" rel="noopener">{{ m.icon("whatsapp") }} WhatsApp me to book</a>
+          <a class="panel__link" href="/events.html">See all events</a>
+        </div>
+      </article>
+
+      <article class="panel">
+        {{ m.flipCard("ball", "The Distance", "panel__card") }}
+        <div class="panel__head">
+          <span class="diamond" aria-hidden="true">{{ m.icon("video") }}</span>
+          <h3>Video readings</h3>
+        </div>
+        <ul class="panel__meta">
+          <li>{{ m.icon("clock") }} {{ home.video_duration }}</li>
+          <li>{{ m.icon("ticket") }} {{ home.video_price }}</li>
+          <li>{{ m.icon("video") }} From your own home</li>
+        </ul>
+        <p>{{ home.video_text }}</p>
+        <a class="panel__link" href="/book.html#calendar">Book a video reading</a>
+      </article>
+
+      <article class="panel">
+        {{ m.flipCard("candle", "The Gathering", "panel__card") }}
+        <div class="panel__head">
+          <span class="diamond" aria-hidden="true">{{ m.icon("users") }}</span>
+          <h3>Group events</h3>
+        </div>
+        <ul class="panel__meta">
+          <li>{{ m.icon("calendar") }} Evenings of mediumship</li>
+        </ul>
+        <p>{{ home.group_text }}</p>
+        <a class="panel__link" href="/events.html">See upcoming events</a>
+      </article>
+
+      <article class="panel panel--span">
+        {{ m.flipCard("home", "The Hearth", "panel__card") }}
+        <div class="panel__head">
+          <span class="diamond" aria-hidden="true">{{ m.icon("store") }}</span>
+          <h3>Spiritual house parties</h3>
+        </div>
+        <ul class="panel__meta">
+          <li>{{ m.icon("users") }} You host, I bring the readings</li>
+        </ul>
+        <p>{{ home.house_party_text }}</p>
+        <a class="panel__link" href="/book.html">Plan a house party</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- About me -->
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="container about">
+    <figure class="portrait">
+      <div class="portrait__frame">
+        <img src="{{ home.about_portrait }}" alt="{{ home.about_portrait_alt }}" sizes="(min-width: 900px) 380px, 82vw">
+        <figcaption class="portrait__name">The Medium</figcaption>
+      </div>
+    </figure>
+    <div class="about__text">
+      <h2 id="about-title">About me</h2>
+      <p class="lead">{{ home.about_lead }}</p>
+      {% for p in home.about_paragraphs %}<p>{{ p }}</p>
+      {% endfor %}
+      <ul class="about__offers" aria-label="Ways I work">
+        {% for skill in home.about_skills %}<li>{{ skill }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="section section--glow" aria-labelledby="reviews-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="reviews-title">Kind words</h2>
+    </div>
+    <div class="reviews">
+      {% for r in home.reviews %}
+      <figure class="review">
+        <div class="review__stars" role="img" aria-label="5 out of 5 stars">
+          {% for s in range(5) %}<svg aria-hidden="true"><use href="#i-rating"/></svg>{% endfor %}
+        </div>
+        <blockquote><p>{{ r.quote }}</p></blockquote>
+        <figcaption>{{ r.source }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Evenings of mediumship: the next three -->
+<section class="section" id="events" aria-labelledby="events-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="events-title">Evenings of mediumship</h2>
+      <p class="section__intro">{{ home.evenings_intro }}</p>
+    </div>
+
+    {% for e in evenings | limit(3) %}
+      {{ m.eventCard(e, false) }}
+    {% else %}
+      <p>New evenings coming soon. Follow me on Facebook or Instagram to hear first.</p>
+    {% endfor %}
+
+    <div class="events-more">
+      <p>Looking for a 1-2-1? I'm reading at Mind Body Spirit fairs most weekends.</p>
+      <a class="btn btn--ghost" href="/events.html">All events</a>
+    </div>
+
+    {{ m.gallery(gallery.home) }}
+  </div>
+</section>
+
+<!-- Work with me -->
+<section class="section section--glow" id="work" aria-labelledby="work-title">
+  <div class="container">
+    <article class="panel panel--wide">
+      {{ m.flipCard("sun", "The Host", "panel__card") }}
+      <div class="panel__head">
+        <span class="diamond" aria-hidden="true">{{ m.icon("sun") }}</span>
+        <h2 id="work-title">Work with me</h2>
+      </div>
+      <div>
+        <p class="section__intro">{{ home.work_intro }}</p>
+        <ul class="ways">
+          {% for way in home.work_ways %}
+          <li>
+            {{ m.icon(way.icon or "users") }}
+            <div><strong>{{ way.title }}</strong><p>{{ way.text }}</p></div>
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="hero__actions" style="justify-content:flex-start">
+          <a class="btn btn--gold" href="mailto:{{ settings.email }}?subject=Event%20enquiry">Email about an event</a>
+          <a class="btn btn--ghost" href="tel:+{{ settings.phone_international }}">{{ m.icon("phone") }} {{ settings.phone_display }}</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <h2 id="faq-title">Questions, answered</h2>
+      <p class="section__intro">{{ home.faq_intro }}</p>
+    </div>
+    <div class="faq">
+      {% for q in home.faq %}
+      <details>
+        <summary>{{ q.question }}</summary>
+        <div class="faq__answer"><p>{{ q.answer }}</p></div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Socials -->
+<section class="section section--glow" id="socials" aria-labelledby="socials-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="socials-title">Stay connected</h2>
+      <p class="section__intro">{{ home.socials_intro }}</p>
+    </div>
+    <div class="socials">
+      <a class="social" href="https://www.instagram.com/{{ settings.instagram_handle }}/" target="_blank" rel="noopener">
+        {{ m.icon("instagram") }}
+        <div><strong>Instagram</strong><span>@{{ settings.instagram_handle }}</span></div>
+      </a>
+      <a class="social" href="{{ settings.facebook_url }}" target="_blank" rel="noopener">
+        {{ m.icon("facebook") }}
+        <div><strong>Facebook</strong><span>Event dates and updates</span></div>
+      </a>
+      <a class="social" href="https://wa.me/{{ settings.phone_international }}" target="_blank" rel="noopener">
+        {{ m.icon("whatsapp") }}
+        <div><strong>WhatsApp</strong><span>Message {{ settings.phone_display }}</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Book a reading -->
+<section class="section book" id="book" aria-labelledby="book-title">
+  <div class="container">
+    <div class="book__cards" aria-hidden="true">
+      {{ m.flipCard("moon", "The Moon") }}
+      {{ m.flipCard("key", "The Booking") }}
+      {{ m.flipCard("star", "The Star") }}
+    </div>
+    <h2 id="book-title">Book a reading</h2>
+    <p class="section__intro">{{ home.book_intro }}</p>
+    <div class="book__actions">
+      <a class="btn btn--gold" href="/book.html">Book a reading</a>
+    </div>
+    <div class="contact-row">
+      <a href="tel:+{{ settings.phone_international }}">{{ m.icon("phone") }} {{ settings.phone_display }}</a>
+      <a href="mailto:{{ settings.email }}">{{ m.icon("mail") }} {{ settings.email }}</a>
+    </div>
+  </div>
+</section>

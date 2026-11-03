@@ -1,0 +1,114 @@
+{% import "partials/macros.njk" as m with context %}
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="theme-color" content="#063626">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:image" content="/assets/img/logo.jpg">
+  <link rel="icon" href="/assets/img/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Figtree:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script>document.documentElement.classList.add('js');window.SITE={booking:{{ settings.calendly_url | dump | safe }},whatsapp:{{ settings.phone_international | dump | safe }}};</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include "partials/icons.njk" %}
+
+  <header class="nav" data-nav>
+    <div class="container nav__inner">
+      <a class="nav__brand" href="/" aria-label="Connor Boyd, home">
+        {{ m.icon("dove") }}
+        <span>Connor Boyd</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="/#offer">Readings</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/events.html"{% if nav == "events" %} aria-current="page"{% endif %}>Events</a></li>
+        <li><a href="/#work">Work with me</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+      </ul>
+      <a class="btn btn--gold nav__cta" href="{{ '#choose' if nav == 'book' else '/book.html' }}">Book a reading</a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
+        {{ m.icon("menu") }}
+        <span class="visually-hidden">Open menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" data-menu>
+    <div class="menu__top">
+      <a class="nav__brand" href="/">
+        {{ m.icon("dove") }}
+        <span>Connor Boyd</span>
+      </a>
+      <button class="nav__toggle" type="button" data-menu-close>
+        {{ m.icon("close") }}
+        <span class="visually-hidden">Close menu</span>
+      </button>
+    </div>
+    <ul class="menu__links">
+      <li><a href="/#offer" style="--i:0">Readings</a></li>
+      <li><a href="/#about" style="--i:1">About me</a></li>
+      <li><a href="/events.html" style="--i:2"{% if nav == "events" %} aria-current="page"{% endif %}>Events</a></li>
+      <li><a href="/#work" style="--i:3">Work with me</a></li>
+      <li><a href="/#faq" style="--i:4">FAQ</a></li>
+      <li><a href="/#socials" style="--i:5">Socials</a></li>
+    </ul>
+    <div class="menu__contact">
+      <a class="btn btn--gold" href="/book.html">Book a reading</a>
+      <a class="btn btn--ghost" href="tel:+{{ settings.phone_international }}">{{ m.icon("phone") }} {{ settings.phone_display }}</a>
+    </div>
+  </div>
+
+  <main id="main">
+    {{ content | safe }}
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <a class="nav__brand" href="/">
+            {{ m.icon("dove") }}
+            <span>Connor Boyd</span>
+          </a>
+          <p style="margin-top:12px">{{ home.footer_text }}</p>
+        </div>
+        <nav aria-label="Footer">
+          <h2>Explore</h2>
+          <ul>
+            <li><a href="/#offer">Readings</a></li>
+            <li><a href="/#about">About me</a></li>
+            <li><a href="/events.html">Events</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/book.html">Book a reading</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="tel:+{{ settings.phone_international }}">{{ settings.phone_display }}</a></li>
+            <li><a href="mailto:{{ settings.email }}">{{ settings.email }}</a></li>
+            <li><a href="https://www.instagram.com/{{ settings.instagram_handle }}/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="{{ settings.facebook_url }}" target="_blank" rel="noopener">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__note">
+        <p>{{ home.footer_note }}</p>
+        <p>&copy; <span data-year>2026</span> Connor Boyd Spiritual Medium</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+  {% if nav == "book" %}<script src="https://assets.calendly.com/assets/external/widget.js" async></script>{% endif %}
+</body>
+</html>

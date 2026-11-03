@@ -1,0 +1,11 @@
+# Built site and tools (recreated on every publish)
+_site/
+node_modules/
+
+# Original photos, videos and print files: kept on this PC only
+Content/
+Photos/
+Videos/
+
+# Local editor settings
+.claude/

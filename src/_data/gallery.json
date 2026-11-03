@@ -1,0 +1,18 @@
+{
+  "home": [
+    { "image": "/assets/img/stage-close-800.jpg", "alt": "Connor passing on a message to an audience member at a packed evening event" },
+    { "image": "/assets/img/marquee-800.jpg", "alt": "Connor standing among a seated audience in a marquee" },
+    { "image": "/assets/img/evening-banner-800.jpg", "alt": "Connor demonstrating mediumship beside his banner in a function room" },
+    { "image": "/assets/img/reading-table-800.jpg", "alt": "Connor at his reading table at a spiritual fair" }
+  ],
+  "events": [
+    { "image": "/assets/img/stage-stars-800.jpg", "alt": "Connor on stage beneath a starlit ceiling in front of a seated audience" },
+    { "image": "/assets/img/purple-room-800.jpg", "alt": "A full function room lit in purple during an evening of mediumship" },
+    { "image": "/assets/img/demo-close-800.jpg", "alt": "Connor mid-message in front of an attentive audience" },
+    { "image": "/assets/img/marquee-crowd-800.jpg", "alt": "A packed marquee audience at an outdoor event" },
+    { "image": "/assets/img/full-house-800.jpg", "alt": "A large hall filled with guests at a sold-out event" },
+    { "image": "/assets/img/fair-hall-800.jpg", "alt": "Connor at his reading table at a spiritual fair in a glass-roofed hall" },
+    { "image": "/assets/img/fair-stall-800.jpg", "alt": "Connor's reading table and banner at an event" },
+    { "image": "/assets/img/lion-stall-800.jpg", "alt": "Connor seated at his reading table ready for private readings" }
+  ]
+}

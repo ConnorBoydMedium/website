@@ -1,0 +1,105 @@
+---
+layout: layouts/base.njk
+permalink: /book.html
+title: Book a reading | Connor Boyd, Spiritual Medium
+description: Book a 1-2-1, video or house-party reading with Connor Boyd, spiritual medium.
+nav: book
+---
+{% import "partials/macros.njk" as m with context %}
+{% set readings = events | upcoming("reading") %}
+
+<header class="page-head">
+  <div class="container">
+    {{ m.flipCard("key", "", "page-head__card") }}
+    <h1>Book a reading</h1>
+    <p>{{ bookpage.intro }}</p>
+  </div>
+</header>
+
+<section class="section" id="choose" aria-labelledby="choose-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="choose-title">Choose your reading</h2>
+    </div>
+    <div class="readings">
+      <article class="reading reading--span">
+        <h3>1-2-1 reading</h3>
+        <div>
+          <p class="reading__price"><span>{{ home.readings_duration }}</span><span>{{ home.readings_price }}</span></p>
+          <p>{{ bookpage.readings_text }}</p>
+          {{ m.weekendList(readings) }}
+        </div>
+        <div class="event__actions">
+          <a class="btn btn--gold" href="{{ m.whatsappGeneral() }}" target="_blank" rel="noopener">{{ m.icon("whatsapp") }} WhatsApp me to book</a>
+          <a class="btn btn--ghost" href="/events.html">{{ m.icon("calendar") }} See all events</a>
+        </div>
+      </article>
+      <article class="reading">
+        <h3>Video reading</h3>
+        <div>
+          <p class="reading__price"><span>{{ home.video_duration }}</span><span>{{ home.video_price }}</span><span>From your own home</span></p>
+          <p>{{ bookpage.video_text }}</p>
+        </div>
+        <a class="btn btn--gold" href="#calendar">{{ m.icon("calendar") }} Choose a time</a>
+      </article>
+      <article class="reading">
+        <h3>Spiritual house party</h3>
+        <div>
+          <p class="reading__price"><span>At your home</span><span>Price on request</span></p>
+          <p>{{ bookpage.house_party_text }}</p>
+        </div>
+        <a class="btn btn--ghost" href="mailto:{{ settings.email }}?subject=House%20party%20enquiry">{{ m.icon("mail") }} Enquire about a house party</a>
+      </article>
+      <article class="reading reading--span">
+        <h3>Group events</h3>
+        <div>
+          <p class="reading__price"><span>Tickets per event</span></p>
+          <p>{{ bookpage.group_text }}</p>
+        </div>
+        <a class="btn btn--ghost" href="/events.html">{{ m.icon("ticket") }} See upcoming events</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--glow" id="calendar" aria-labelledby="calendar-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="calendar-title">Book a video reading</h2>
+      <p class="section__intro">{{ bookpage.calendar_intro }}</p>
+    </div>
+    <div class="calendar">
+      <div class="calendly-inline-widget" data-url="{{ settings.calendly_url }}?primary_color=063726&hide_gdpr_banner=1"></div>
+      <noscript><p>Booking calendar needs JavaScript. <a href="{{ settings.calendly_url }}">Open the booking page</a>.</p></noscript>
+    </div>
+    <p class="calendar__alt">Calendar not loading? <a href="{{ settings.calendly_url }}" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="how-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="how-title">How booking works</h2>
+    </div>
+    <ol class="steps">
+      {% for step in bookpage.steps %}
+      <li><strong>{{ step.title }}</strong>{{ step.text }}</li>
+      {% endfor %}
+    </ol>
+    <div class="notice">
+      <p>{{ bookpage.notice }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section book" aria-labelledby="talk-title">
+  <div class="container">
+    <h2 id="talk-title">Rather talk first?</h2>
+    <p class="section__intro">{{ bookpage.talk_intro }}</p>
+    <div class="contact-row">
+      <a href="tel:+{{ settings.phone_international }}">{{ m.icon("phone") }} {{ settings.phone_display }}</a>
+      <a href="https://wa.me/{{ settings.phone_international }}" target="_blank" rel="noopener">{{ m.icon("whatsapp") }} WhatsApp</a>
+      <a href="mailto:{{ settings.email }}">{{ m.icon("mail") }} {{ settings.email }}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,213 @@
+# Pages CMS: the editing screen at app.pagescms.org
+# Each entry below becomes a section in the editor's sidebar.
+
+media:
+  input: src/assets/img
+  output: /assets/img
+  categories: [image]
+
+content:
+  - name: events
+    label: Events
+    type: file
+    path: src/_data/events.json
+    format: json
+    list: true
+    fields:
+      - name: type
+        label: Type of event
+        type: select
+        required: true
+        options:
+          values:
+            - { name: evening, label: "Evening of mediumship (Eventbrite tickets)" }
+            - { name: reading, label: "1-2-1 reading day (WhatsApp to book)" }
+      - name: title
+        label: Event name
+        type: string
+        required: true
+        description: "For example: Telford Mind Body Spirit, or The Playhouse, with High Peak Healing"
+      - name: start
+        label: Date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: end
+        label: Last day (two-day events only)
+        type: date
+        default: ""
+        description: Leave empty for one-day events.
+        options:
+          format: yyyy-MM-dd
+      - name: time
+        label: Time
+        type: string
+        description: "For example: 7pm to 9pm, doors 6pm"
+      - name: price
+        label: Price
+        type: string
+        description: "For example: £15 + booking fee"
+      - name: address
+        label: Full address
+        type: string
+        required: true
+        description: Used for the Get directions button.
+      - name: list_line
+        label: Short line for the weekend list (1-2-1 days only)
+        type: string
+        description: "Shown under the name in 'Weekends I'm reading at'. For example: The Venue, Urmston, M41 0XQ. Leave empty to use the full address."
+      - name: tickets_url
+        label: Eventbrite link (evenings only)
+        type: string
+        description: Paste the event's Eventbrite address. This powers the Book tickets button.
+      - name: note
+        label: Extra note (optional)
+        type: text
+        description: "For example: Book by WhatsApp, or message Mystical Moments on Facebook."
+      - name: label
+        label: Custom label (optional)
+        type: string
+        description: "Replaces 'Evening of mediumship' or '1-2-1 readings' above the name. For example: Day of 1-2-1 readings"
+
+  - name: home
+    label: Home page
+    type: file
+    path: src/_data/home.json
+    format: json
+    fields:
+      - { name: hero_tagline, label: "Tagline under the logo", type: text }
+      - { name: hero_intro, label: "Line under the tagline", type: text }
+      - { name: offer_intro, label: "What I offer: intro", type: text }
+      - { name: readings_duration, label: "1-2-1 readings: length", type: string }
+      - { name: readings_price, label: "1-2-1 readings: price", type: string }
+      - { name: readings_text, label: "1-2-1 readings: description", type: text }
+      - { name: video_duration, label: "Video readings: length", type: string }
+      - { name: video_price, label: "Video readings: price", type: string }
+      - { name: video_text, label: "Video readings: description", type: text }
+      - { name: group_text, label: "Group events: description", type: text }
+      - { name: house_party_text, label: "House parties: description", type: text }
+      - name: about_portrait
+        label: "About me: photo"
+        type: image
+        options:
+          extensions: [jpg, jpeg, png, webp]
+      - { name: about_portrait_alt, label: "About me: photo description (for screen readers)", type: string }
+      - { name: about_lead, label: "About me: opening line", type: text }
+      - { name: about_paragraphs, label: "About me: paragraphs", type: text, list: true }
+      - { name: about_skills, label: "About me: ways I work", type: string, list: true }
+      - name: reviews
+        label: Reviews
+        type: object
+        list: true
+        fields:
+          - { name: quote, label: Quote, type: text }
+          - { name: source, label: "Who said it (for example: Client review)", type: string }
+      - { name: evenings_intro, label: "Evenings of mediumship: intro", type: text }
+      - { name: work_intro, label: "Work with me: intro", type: text }
+      - name: work_ways
+        label: "Work with me: list"
+        type: object
+        list: true
+        fields:
+          - name: icon
+            label: Icon
+            type: select
+            options:
+              values:
+                - { name: users, label: Group }
+                - { name: store, label: Shop or fair }
+                - { name: home, label: Home }
+                - { name: calendar, label: Calendar }
+          - { name: title, label: Title, type: string }
+          - { name: text, label: Description, type: text }
+      - { name: faq_intro, label: "FAQ: intro", type: text }
+      - name: faq
+        label: "FAQ: questions"
+        type: object
+        list: true
+        fields:
+          - { name: question, label: Question, type: string }
+          - { name: answer, label: Answer, type: text }
+      - { name: socials_intro, label: "Stay connected: intro", type: text }
+      - { name: book_intro, label: "Book a reading: intro", type: text }
+      - { name: footer_text, label: "Footer: about line", type: text }
+      - { name: footer_note, label: "Footer: small print", type: text }
+
+  - name: bookpage
+    label: Book page
+    type: file
+    path: src/_data/bookpage.json
+    format: json
+    fields:
+      - { name: intro, label: "Intro under the heading", type: text }
+      - { name: readings_text, label: "1-2-1 reading: description", type: text }
+      - { name: video_text, label: "Video reading: description", type: text }
+      - { name: house_party_text, label: "House party: description", type: text }
+      - { name: group_text, label: "Group events: description", type: text }
+      - { name: calendar_intro, label: "Video booking calendar: intro", type: text }
+      - name: steps
+        label: How booking works
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Step, type: string }
+          - { name: text, label: Description, type: text }
+      - { name: notice, label: "Changing a booking: note", type: text }
+      - { name: talk_intro, label: "Rather talk first: intro", type: text }
+
+  - name: eventspage
+    label: Events page
+    type: file
+    path: src/_data/eventspage.json
+    format: json
+    fields:
+      - { name: intro, label: "Intro under the heading", type: text }
+      - { name: calendar_intro, label: "Calendar: intro", type: text }
+      - { name: evenings_intro, label: "Evenings of mediumship: intro", type: text }
+      - { name: readings_intro, label: "Weekend 1-2-1 readings: intro", type: text }
+      - { name: follow_note, label: "Follow for new dates: note", type: text }
+      - { name: gallery_intro, label: "Photo gallery: intro", type: text }
+      - { name: host_intro, label: "Bring an evening to your venue: intro", type: text }
+
+  - name: gallery
+    label: Photos
+    type: file
+    path: src/_data/gallery.json
+    format: json
+    fields:
+      - name: home
+        label: Home page photos (4 work best)
+        type: object
+        list: true
+        fields:
+          - name: image
+            label: Photo
+            type: image
+            options:
+              extensions: [jpg, jpeg, png, webp]
+          - { name: alt, label: "Description (what's in the photo)", type: string }
+      - name: events
+        label: Events page photos (8 work best)
+        type: object
+        list: true
+        fields:
+          - name: image
+            label: Photo
+            type: image
+            options:
+              extensions: [jpg, jpeg, png, webp]
+          - { name: alt, label: "Description (what's in the photo)", type: string }
+
+  - name: settings
+    label: Contact details
+    type: file
+    path: src/_data/settings.json
+    format: json
+    fields:
+      - { name: phone_display, label: "Phone number (as shown)", type: string }
+      - { name: phone_international, label: "Phone for WhatsApp (44 then number without the 0)", type: string }
+      - { name: email, label: Email, type: string }
+      - { name: instagram_handle, label: "Instagram username (without @)", type: string }
+      - { name: facebook_url, label: Facebook page link, type: string }
+      - { name: calendly_url, label: Calendly booking link, type: string }
