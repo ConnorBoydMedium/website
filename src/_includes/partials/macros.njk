@@ -38,7 +38,7 @@
       {% if e.type == "evening" and e.tickets_url %}
       <a class="btn btn--gold" href="{{ e.tickets_url }}" target="_blank" rel="noopener">{{ icon("ticket") }} Book tickets<span class="visually-hidden"> for {{ e.title }}, {{ e | shortDate }} (opens Eventbrite)</span></a>
       {% elif e.type == "reading" %}
-      <a class="btn btn--gold" href="https://wa.me/{{ settings.phone_international }}" target="_blank" rel="noopener" data-whatsapp-book>{{ icon("whatsapp") }} WhatsApp to book</a>
+      <a class="btn btn--gold" href="https://wa.me/{{ settings.whatsapp_username }}" target="_blank" rel="noopener" data-whatsapp-book>{{ icon("whatsapp") }} WhatsApp to book</a>
       {% endif %}
       {% if showDirections and e.address %}
       <a class="btn btn--ghost" href="{{ e.address | mapsUrl }}" target="_blank" rel="noopener">{{ icon("pin") }} Get directions</a>
@@ -66,7 +66,7 @@
 {% endmacro %}
 
 {% macro whatsappGeneral() -%}
-https://wa.me/{{ settings.phone_international }}?text={{ "Hi Connor, I'd like to book a 1-2-1 reading at one of your weekend reading days." | urlencode }}
+https://wa.me/{{ settings.whatsapp_username }}?text={{ "Hi Connor, I'd like to book a 1-2-1 reading at one of your weekend reading days." | urlencode }}
 {%- endmacro %}
 
 {% macro gallery(items) %}

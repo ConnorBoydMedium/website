@@ -85,7 +85,7 @@ if ('IntersectionObserver' in window) {
 
 /* "WhatsApp to book" buttons on reading-day cards: fill in a ready-made
    message naming the event and date, built from the card itself. */
-const WHATSAPP_NUMBER = SITE.whatsapp || '447925912038';
+const WHATSAPP_USERNAME = SITE.whatsapp || 'psychicmediumconnor';
 document.querySelectorAll('[data-whatsapp-book]').forEach((a) => {
   const card = a.closest('.event');
   if (!card) return;
@@ -94,7 +94,7 @@ document.querySelectorAll('[data-whatsapp-book]').forEach((a) => {
   const month = card.querySelector('.event__month').textContent.trim().split(/\s+/)[0];
   const title = card.querySelector('h3').textContent.trim();
   const message = `Hi Connor, I'd like to book a 1-2-1 reading at ${title} (${dow} ${day} ${month}).`;
-  a.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  a.href = `https://wa.me/${WHATSAPP_USERNAME}?text=${encodeURIComponent(message)}`;
   a.setAttribute('aria-label', `WhatsApp to book a reading at ${title}, ${dow} ${day} ${month} (opens WhatsApp)`);
 });
 

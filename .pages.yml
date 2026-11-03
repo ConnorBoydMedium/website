@@ -199,8 +199,7 @@ content:
     path: src/_data/settings.json
     format: json
     fields:
-      - { name: phone_display, label: "Phone number (as shown)", type: string }
-      - { name: phone_international, label: "Phone for WhatsApp (44 then number without the 0)", type: string }
+      - { name: whatsapp_username, label: "WhatsApp username (without @)", type: string }
       - { name: email, label: Email, type: string }
       - { name: instagram_handle, label: "Instagram username (without @)", type: string }
       - { name: facebook_url, label: Facebook page link, type: string }

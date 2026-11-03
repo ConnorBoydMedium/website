@@ -194,7 +194,7 @@ nav: home
         </ul>
         <div class="hero__actions" style="justify-content:flex-start">
           <a class="btn btn--gold" href="mailto:{{ settings.email }}?subject=Event%20enquiry">Email about an event</a>
-          <a class="btn btn--ghost" href="tel:+{{ settings.phone_international }}">{{ m.icon("phone") }} {{ settings.phone_display }}</a>
+          <a class="btn btn--ghost" href="https://wa.me/{{ settings.whatsapp_username }}" target="_blank" rel="noopener">{{ m.icon("whatsapp") }} WhatsApp</a>
         </div>
       </div>
     </article>
@@ -235,13 +235,12 @@ nav: home
         {{ m.icon("facebook") }}
         <div><strong>Facebook</strong><span>Event dates and updates</span></div>
       </a>
-      <a class="social" href="https://wa.me/{{ settings.phone_international }}" target="_blank" rel="noopener">
+      <a class="social" href="https://wa.me/{{ settings.whatsapp_username }}" target="_blank" rel="noopener">
         {{ m.icon("whatsapp") }}
-        <div><strong>WhatsApp</strong><span>Message {{ settings.phone_display }}</span></div>
+        <div><strong>WhatsApp</strong><span>{{ settings.whatsapp_username }}</span></div>
       </a>
     </div>
     <div class="contact-row" style="justify-content:flex-start">
-      <a href="tel:+{{ settings.phone_international }}">{{ m.icon("phone") }} {{ settings.phone_display }}</a>
       <a href="mailto:{{ settings.email }}">{{ m.icon("mail") }} {{ settings.email }}</a>
     </div>
   </div>
