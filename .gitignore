@@ -9,3 +9,6 @@ Videos/
 
 # Local editor settings
 .claude/
+
+# Local-only style preview
+src/preview.njk

@@ -1,15 +1,8 @@
 {
-  "intro": "Pick the reading that feels right, choose a time, and I'll take care of the rest.",
+  "intro": "In person at a weekend reading day, by video from home, or with friends at a house party.",
   "readings_text": "A private, face-to-face sitting with me, at weekend reading days.",
   "video_text": "The same reading, over a video call, wherever you are.",
   "house_party_text": "Private readings for each of your guests. Tell me your date, area and how many people, and I'll come back to you with details.",
-  "group_text": "Evenings of mediumship and readings days at venues near you. Tickets are booked event by event.",
   "calendar_intro": "Pick a day and time below. You'll get a confirmation by email straight away.",
-  "steps": [
-    { "title": "Choose your reading", "text": "Pick a weekend date for an in-person reading, or a video slot from the calendar." },
-    { "title": "Get your confirmation", "text": "You'll receive the details of your booking, including the address or video link." },
-    { "title": "Come with an open heart", "text": "There's nothing to prepare. Just bring yourself, and any questions you'd like answered." }
-  ],
-  "notice": "Need to change your booking? Let me know at least 24 hours before so I can offer your slot to someone else.",
-  "talk_intro": "Call, message or email. I'm happy to answer any questions before you book."
+  "notice": "Need to change your booking? Let me know at least 24 hours before so I can offer your slot to someone else."
 }

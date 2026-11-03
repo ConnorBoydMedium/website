@@ -16,10 +16,6 @@ nav: home
     <img class="hero__logo" src="/assets/img/logo.jpg" width="900" height="900" alt="Connor Boyd, Spiritual Medium" fetchpriority="high" eleventy:ignore>
     <p class="hero__tagline">{{ home.hero_tagline }}</p>
     <p class="hero__sub">{{ home.hero_intro }}</p>
-    <div class="hero__actions">
-      <a class="btn btn--gold" href="/book.html">Book a reading</a>
-      <a class="btn btn--ghost" href="/events.html">See upcoming events</a>
-    </div>
   </div>
 
   <div class="table">
@@ -48,7 +44,6 @@ nav: home
   <div class="container">
     <div class="section__head">
       <h2 id="offer-title">What I offer</h2>
-      <p class="section__intro">{{ home.offer_intro }}</p>
     </div>
 
     <div class="panels panels--two">
@@ -65,8 +60,7 @@ nav: home
         <p>{{ home.readings_text }}</p>
         {{ m.weekendList(readings) }}
         <div class="event__actions" style="align-items:center;gap:12px 24px">
-          <a class="btn btn--gold" href="{{ m.whatsappGeneral() }}" target="_blank" rel="noopener">{{ m.icon("whatsapp") }} WhatsApp me to book</a>
-          <a class="panel__link" href="/events.html">See all events</a>
+          <a class="btn btn--gold" href="{{ m.whatsappGeneral() }}" target="_blank" rel="noopener">{{ m.icon("whatsapp") }} WhatsApp to reserve a slot</a>
         </div>
       </article>
 
@@ -82,7 +76,7 @@ nav: home
           <li>{{ m.icon("video") }} From your own home</li>
         </ul>
         <p>{{ home.video_text }}</p>
-        <a class="panel__link" href="/book.html#calendar">Book a video reading</a>
+        <a class="panel__link" href="/book.html#calendar">Choose a time</a>
       </article>
 
       <article class="panel">
@@ -95,7 +89,7 @@ nav: home
           <li>{{ m.icon("calendar") }} Evenings of mediumship</li>
         </ul>
         <p>{{ home.group_text }}</p>
-        <a class="panel__link" href="/events.html">See upcoming events</a>
+        <a class="panel__link" href="/events.html">See the dates</a>
       </article>
 
       <article class="panel panel--span">
@@ -108,7 +102,7 @@ nav: home
           <li>{{ m.icon("users") }} You host, I bring the readings</li>
         </ul>
         <p>{{ home.house_party_text }}</p>
-        <a class="panel__link" href="/book.html">Plan a house party</a>
+        <a class="panel__link" href="mailto:{{ settings.email }}?subject=House%20party%20enquiry">Ask about a date</a>
       </article>
     </div>
   </div>
@@ -225,11 +219,11 @@ nav: home
   </div>
 </section>
 
-<!-- Socials -->
+<!-- Get in touch -->
 <section class="section section--glow" id="socials" aria-labelledby="socials-title">
   <div class="container">
     <div class="section__head">
-      <h2 id="socials-title">Stay connected</h2>
+      <h2 id="socials-title">Get in touch</h2>
       <p class="section__intro">{{ home.socials_intro }}</p>
     </div>
     <div class="socials">
@@ -246,23 +240,7 @@ nav: home
         <div><strong>WhatsApp</strong><span>Message {{ settings.phone_display }}</span></div>
       </a>
     </div>
-  </div>
-</section>
-
-<!-- Book a reading -->
-<section class="section book" id="book" aria-labelledby="book-title">
-  <div class="container">
-    <div class="book__cards" aria-hidden="true">
-      {{ m.flipCard("moon", "The Moon") }}
-      {{ m.flipCard("key", "The Booking") }}
-      {{ m.flipCard("star", "The Star") }}
-    </div>
-    <h2 id="book-title">Book a reading</h2>
-    <p class="section__intro">{{ home.book_intro }}</p>
-    <div class="book__actions">
-      <a class="btn btn--gold" href="/book.html">Book a reading</a>
-    </div>
-    <div class="contact-row">
+    <div class="contact-row" style="justify-content:flex-start">
       <a href="tel:+{{ settings.phone_international }}">{{ m.icon("phone") }} {{ settings.phone_display }}</a>
       <a href="mailto:{{ settings.email }}">{{ m.icon("mail") }} {{ settings.email }}</a>
     </div>

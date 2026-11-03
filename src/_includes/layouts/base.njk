@@ -34,7 +34,7 @@
         <li><a href="/#work">Work with me</a></li>
         <li><a href="/#faq">FAQ</a></li>
       </ul>
-      <a class="btn btn--gold nav__cta" href="{{ '#choose' if nav == 'book' else '/book.html' }}">Book a reading</a>
+      {% if nav != "book" %}<a class="btn btn--gold nav__cta" href="/book.html">Book a reading</a>{% endif %}
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
         {{ m.icon("menu") }}
         <span class="visually-hidden">Open menu</span>
@@ -88,7 +88,7 @@
             <li><a href="/#about">About me</a></li>
             <li><a href="/events.html">Events</a></li>
             <li><a href="/#faq">FAQ</a></li>
-            <li><a href="/book.html">Book a reading</a></li>
+            <li><a href="/book.html">Booking</a></li>
           </ul>
         </nav>
         <div>

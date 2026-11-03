@@ -85,14 +85,12 @@ content:
     fields:
       - { name: hero_tagline, label: "Tagline under the logo", type: text }
       - { name: hero_intro, label: "Line under the tagline", type: text }
-      - { name: offer_intro, label: "What I offer: intro", type: text }
       - { name: readings_duration, label: "1-2-1 readings: length", type: string }
       - { name: readings_price, label: "1-2-1 readings: price", type: string }
       - { name: readings_text, label: "1-2-1 readings: description", type: text }
       - { name: video_duration, label: "Video readings: length", type: string }
       - { name: video_price, label: "Video readings: price", type: string }
       - { name: video_text, label: "Video readings: description", type: text }
-      - { name: group_text, label: "Group events: description", type: text }
       - { name: house_party_text, label: "House parties: description", type: text }
       - name: about_portrait
         label: "About me: photo"
@@ -137,7 +135,6 @@ content:
           - { name: question, label: Question, type: string }
           - { name: answer, label: Answer, type: text }
       - { name: socials_intro, label: "Stay connected: intro", type: text }
-      - { name: book_intro, label: "Book a reading: intro", type: text }
       - { name: footer_text, label: "Footer: about line", type: text }
       - { name: footer_note, label: "Footer: small print", type: text }
 
@@ -151,17 +148,8 @@ content:
       - { name: readings_text, label: "1-2-1 reading: description", type: text }
       - { name: video_text, label: "Video reading: description", type: text }
       - { name: house_party_text, label: "House party: description", type: text }
-      - { name: group_text, label: "Group events: description", type: text }
       - { name: calendar_intro, label: "Video booking calendar: intro", type: text }
-      - name: steps
-        label: How booking works
-        type: object
-        list: { collapsible: { collapsed: true, summary: "{title}" } }
-        fields:
-          - { name: title, label: Step, type: string }
-          - { name: text, label: Description, type: text }
       - { name: notice, label: "Changing a booking: note", type: text }
-      - { name: talk_intro, label: "Rather talk first: intro", type: text }
 
   - name: eventspage
     label: Events page
@@ -175,7 +163,6 @@ content:
       - { name: readings_intro, label: "Weekend 1-2-1 readings: intro", type: text }
       - { name: follow_note, label: "Follow for new dates: note", type: text }
       - { name: gallery_intro, label: "Photo gallery: intro", type: text }
-      - { name: host_intro, label: "Bring an evening to your venue: intro", type: text }
 
   - name: gallery
     label: Photos

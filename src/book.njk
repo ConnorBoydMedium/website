@@ -30,8 +30,7 @@ nav: book
           {{ m.weekendList(readings) }}
         </div>
         <div class="event__actions">
-          <a class="btn btn--gold" href="{{ m.whatsappGeneral() }}" target="_blank" rel="noopener">{{ m.icon("whatsapp") }} WhatsApp me to book</a>
-          <a class="btn btn--ghost" href="/events.html">{{ m.icon("calendar") }} See all events</a>
+          <a class="btn btn--gold" href="{{ m.whatsappGeneral() }}" target="_blank" rel="noopener">{{ m.icon("whatsapp") }} WhatsApp to reserve a slot</a>
         </div>
       </article>
       <article class="reading">
@@ -48,17 +47,10 @@ nav: book
           <p class="reading__price"><span>At your home</span><span>Price on request</span></p>
           <p>{{ bookpage.house_party_text }}</p>
         </div>
-        <a class="btn btn--ghost" href="mailto:{{ settings.email }}?subject=House%20party%20enquiry">{{ m.icon("mail") }} Enquire about a house party</a>
-      </article>
-      <article class="reading reading--span">
-        <h3>Group events</h3>
-        <div>
-          <p class="reading__price"><span>Tickets per event</span></p>
-          <p>{{ bookpage.group_text }}</p>
-        </div>
-        <a class="btn btn--ghost" href="/events.html">{{ m.icon("ticket") }} See upcoming events</a>
+        <a class="btn btn--ghost" href="mailto:{{ settings.email }}?subject=House%20party%20enquiry">{{ m.icon("mail") }} Ask about a date</a>
       </article>
     </div>
+    <p class="calendar__alt">Questions first? Call or WhatsApp <a href="tel:+{{ settings.phone_international }}">{{ settings.phone_display }}</a>, or email <a href="mailto:{{ settings.email }}">{{ settings.email }}</a>.</p>
   </div>
 </section>
 
@@ -72,34 +64,6 @@ nav: book
       <div class="calendly-inline-widget" data-url="{{ settings.calendly_url }}?primary_color=063726&hide_gdpr_banner=1"></div>
       <noscript><p>Booking calendar needs JavaScript. <a href="{{ settings.calendly_url }}">Open the booking page</a>.</p></noscript>
     </div>
-    <p class="calendar__alt">Calendar not loading? <a href="{{ settings.calendly_url }}" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="how-title">
-  <div class="container">
-    <div class="section__head">
-      <h2 id="how-title">How booking works</h2>
-    </div>
-    <ol class="steps">
-      {% for step in bookpage.steps %}
-      <li><strong>{{ step.title }}</strong>{{ step.text }}</li>
-      {% endfor %}
-    </ol>
-    <div class="notice">
-      <p>{{ bookpage.notice }}</p>
-    </div>
-  </div>
-</section>
-
-<section class="section book" aria-labelledby="talk-title">
-  <div class="container">
-    <h2 id="talk-title">Rather talk first?</h2>
-    <p class="section__intro">{{ bookpage.talk_intro }}</p>
-    <div class="contact-row">
-      <a href="tel:+{{ settings.phone_international }}">{{ m.icon("phone") }} {{ settings.phone_display }}</a>
-      <a href="https://wa.me/{{ settings.phone_international }}" target="_blank" rel="noopener">{{ m.icon("whatsapp") }} WhatsApp</a>
-      <a href="mailto:{{ settings.email }}">{{ m.icon("mail") }} {{ settings.email }}</a>
-    </div>
+    <p class="calendar__alt">Calendar not loading? <a href="{{ settings.calendly_url }}" target="_blank" rel="noopener">Open it in a new tab</a>. {{ bookpage.notice }}</p>
   </div>
 </section>

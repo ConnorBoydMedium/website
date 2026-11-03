@@ -1,7 +1,6 @@
 {
   "hero_tagline": "Evidence and messages from loved ones in spirit, delivered with honesty and care.",
   "hero_intro": "1-2-1 readings and evenings of mediumship across the North of England and the Midlands, and video readings wherever you are.",
-  "offer_intro": "Every reading is different, because every person who sits with me is. These are the ways we can connect.",
   "readings_duration": "30 minutes",
   "readings_price": "£40",
   "readings_text": "A private, face-to-face sitting. I'll share what spirit gives me: names, memories, personality and the small details only you would recognise, so you can be sure who's stepping forward.",
@@ -18,29 +17,70 @@
     "My style is direct, honest and grounded. Alongside messages from loved ones in spirit, a reading can bring clarity and direction to what's happening in your life here and now.",
     "Whether we're sitting one to one, connecting by video or I'm demonstrating to a full room, my aim is always the same: to bring comfort, reassurance and a clearer way forward."
   ],
-  "about_skills": ["Mediumship", "Psychic readings", "Tarot", "Angel cards", "Psychometry"],
+  "about_skills": [
+    "Mediumship",
+    "Psychic readings",
+    "Tarot",
+    "Angel cards",
+    "Psychometry"
+  ],
   "reviews": [
-    { "quote": "He's so accurate and insightful! I'd highly recommend Connor!", "source": "Client review" },
-    { "quote": "This guy is truly amazing… he's so spot on. He's worth booking to go and see.", "source": "Event guest" }
+    {
+      "quote": "He's so accurate and insightful! I'd highly recommend Connor!",
+      "source": "Client review"
+    },
+    {
+      "quote": "This guy is truly amazing… he's so spot on. He's worth booking to go and see.",
+      "source": "Event guest"
+    }
   ],
   "evenings_intro": "Join me for a night of live mediumship, with messages passed on around the room.",
   "work_intro": "Venues, organisers and hosts: I'd love to bring an evening of spirit to your guests.",
   "work_ways": [
-    { "icon": "users", "title": "Evenings of mediumship", "text": "Live demonstrations for pubs, clubs, hotels and function rooms, from intimate gatherings to full halls." },
-    { "icon": "store", "title": "Spiritual fairs and readings days", "text": "A reading table at your fair or shop, with private slots booked through you or through me." },
-    { "icon": "home", "title": "House parties and private groups", "text": "Birthdays, get-togethers, or simply a night in with friends." }
+    {
+      "icon": "users",
+      "title": "Evenings of mediumship",
+      "text": "Live demonstrations for pubs, clubs, hotels and function rooms, from intimate gatherings to full halls."
+    },
+    {
+      "icon": "store",
+      "title": "Spiritual fairs and readings days",
+      "text": "A reading table at your fair or shop, with private slots booked through you or through me."
+    },
+    {
+      "icon": "home",
+      "title": "House parties and private groups",
+      "text": "Birthdays, get-togethers, or simply a night in with friends."
+    }
   ],
   "faq_intro": "If yours isn't here, just ask. I'm always happy to talk it through.",
   "faq": [
-    { "question": "What happens in a reading?", "answer": "We'll sit together, in person or on video, and I'll tune in to spirit. I'll describe who's coming through and pass on the details and messages they give me. You only need to answer yes or no; there's no need to tell me anything about yourself." },
-    { "question": "Can you bring through a specific person?", "answer": "I can't promise who will come through. Spirit decides who steps forward, and it's often the person you least expect. Go in with an open heart and you're far more likely to recognise what's given." },
-    { "question": "Do video readings work as well as in-person ones?", "answer": "Yes. The connection is with spirit, not the room. Many people find video readings even more relaxed because they're in their own home." },
-    { "question": "How does a spiritual house party work?", "answer": "You invite friends or family and provide a quiet room. Each guest has a private reading with me in turn while everyone else enjoys the evening. Get in touch with your date, location and rough number of guests and I'll send the details." },
-    { "question": "Is there a minimum age?", "answer": "Readings and events are for adults aged 18 and over." },
-    { "question": "What if I need to change or cancel?", "answer": "Let me know as soon as you can and we'll find a new time. Please give at least 24 hours' notice." }
+    {
+      "question": "What happens in a reading?",
+      "answer": "We'll sit together, in person or on video, and I'll tune in to spirit. I'll describe who's coming through and pass on the details and messages they give me. You only need to answer yes or no; there's no need to tell me anything about yourself."
+    },
+    {
+      "question": "Can you bring through a specific person?",
+      "answer": "I can't promise who will come through. Spirit decides who steps forward, and it's often the person you least expect. Go in with an open heart and you're far more likely to recognise what's given."
+    },
+    {
+      "question": "Do video readings work as well as in-person ones?",
+      "answer": "Yes. The connection is with spirit, not the room. Many people find video readings even more relaxed because they're in their own home."
+    },
+    {
+      "question": "How does a spiritual house party work?",
+      "answer": "You invite friends or family and provide a quiet room. Each guest has a private reading with me in turn while everyone else enjoys the evening. Get in touch with your date, location and rough number of guests and I'll send the details."
+    },
+    {
+      "question": "Is there a minimum age?",
+      "answer": "Readings and events are for adults aged 18 and over."
+    },
+    {
+      "question": "What if I need to change or cancel?",
+      "answer": "Let me know as soon as you can and we'll find a new time. Please give at least 24 hours' notice."
+    }
   ],
-  "socials_intro": "Event dates, messages and the odd behind-the-scenes moment.",
-  "book_intro": "Book a video reading online, find me at a weekend reading day, or get in touch to plan a house party.",
+  "socials_intro": "Follow for new dates, or message me directly.",
   "footer_text": "Psychic and spiritual medium. 1-2-1 readings, video readings, group events and spiritual house parties.",
   "footer_note": "Readings are offered for guidance and comfort and are not a substitute for medical, legal, financial or psychological advice. You must be 18 or over to book."
 }
