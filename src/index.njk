@@ -6,8 +6,8 @@ description: Connor Boyd, psychic and spiritual medium. 1-2-1 readings, video re
 nav: home
 ---
 {% import "partials/macros.njk" as m with context %}
-{% set readings = events | upcoming("reading") %}
-{% set evenings = events | upcoming("evening") %}
+{% set readings = events.events | upcoming("reading") %}
+{% set evenings = events.events | upcoming("evening") %}
 
 <!-- Hero: the reading table -->
 <section class="hero" aria-labelledby="hero-title">

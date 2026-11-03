@@ -6,7 +6,7 @@ description: Book a 1-2-1, video or house-party reading with Connor Boyd, spirit
 nav: book
 ---
 {% import "partials/macros.njk" as m with context %}
-{% set readings = events | upcoming("reading") %}
+{% set readings = events.events | upcoming("reading") %}
 
 <header class="page-head">
   <div class="container">
