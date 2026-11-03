@@ -1,21 +1,33 @@
 /* ==========================================================================
    Connor Boyd · Spiritual Medium
-   Palette sampled from the logo: forest #063626, dove leaf #4A975F,
-   white, plus gold from the five-star reviews used as foil on the cards.
+   Palette: the logo green (#063626) muted to a slate green, dove leaf
+   #4A975F, white, plus gold from the five-star reviews as foil on the cards.
    ========================================================================== */
 
 :root {
-  --forest: #063626;
-  --night: #031d14;
-  --pine: #0b4433;
-  --pine-2: #0f5240;
+  /* Colour channels: everything on the site is built from these, so a
+     theme only needs to change this list */
+  /* "Slate": the logo green, muted to a greyer, softer green */
+  --brand-rgb: 28 47 41;       /* opening section, footer */
+  --bg-rgb: 17 28 24;          /* page background */
+  --surface-rgb: 30 45 40;     /* panels and cards */
+  --surface-2-rgb: 40 60 53;   /* lighter panel glow */
+  --gold-rgb: 196 182 146;     /* lines, borders, tints */
+  --gold-soft-rgb: 236 215 166;
+  --mist-rgb: 202 213 207;     /* body text */
+
+  --forest: rgb(var(--brand-rgb));
+  --night: rgb(var(--bg-rgb));
+  --footer-bg: var(--forest);
   --leaf: #4a975f;
   --gold: #d8b26a;
-  --gold-soft: #ecd7a6;
+  --gold-soft: rgb(var(--gold-soft-rgb));
   --white: #ffffff;
-  --mist: #c6dacd;
-  --line: rgba(216, 178, 106, 0.28);
-  --line-soft: rgba(216, 178, 106, 0.14);
+  --mist: rgb(var(--mist-rgb));
+  --line: rgb(var(--gold-rgb) / 0.28);
+  --line-soft: rgb(var(--gold-rgb) / 0.14);
+  /* the logo image has the full logo green baked in; this mutes it to match */
+  --logo-filter: saturate(0.4);
 
   --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
   --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
@@ -44,6 +56,7 @@
 
   color-scheme: dark;
 }
+
 
 *,
 *::before,
@@ -180,17 +193,17 @@ p {
 .btn--gold {
   background: linear-gradient(180deg, #e6c78a, var(--gold));
   color: #1d2a1f;
-  box-shadow: 0 0 0 1px rgba(255, 238, 200, 0.4) inset, 0 8px 28px -10px rgba(216, 178, 106, 0.7);
+  box-shadow: 0 0 0 1px rgb(var(--gold-soft-rgb) / 0.4) inset, 0 8px 28px -10px rgb(var(--gold-rgb) / 0.7);
 }
 
 .btn--gold:hover {
-  box-shadow: 0 0 0 1px rgba(255, 238, 200, 0.6) inset, 0 10px 36px -8px rgba(216, 178, 106, 0.85);
+  box-shadow: 0 0 0 1px rgb(var(--gold-soft-rgb) / 0.6) inset, 0 10px 36px -8px rgb(var(--gold-rgb) / 0.85);
 }
 
 .btn--ghost {
   border-color: var(--line);
   color: var(--white);
-  background: rgba(6, 54, 38, 0.4);
+  background: rgb(var(--brand-rgb) / 0.4);
 }
 
 .btn--ghost:hover {
@@ -210,7 +223,7 @@ p {
 
 .nav.is-scrolled,
 .nav--solid {
-  background: rgba(3, 29, 20, 0.86);
+  background: rgb(var(--bg-rgb) / 0.86);
   backdrop-filter: blur(10px);
   box-shadow: 0 1px 0 var(--line-soft);
 }
@@ -342,7 +355,7 @@ p {
   grid-template-rows: auto 1fr auto;
   padding: 0 var(--gutter) 32px;
   background:
-    radial-gradient(120% 60% at 50% 110%, rgba(216, 178, 106, 0.16), transparent 60%),
+    radial-gradient(120% 60% at 50% 110%, rgb(var(--gold-rgb) / 0.16), transparent 60%),
     var(--night);
   visibility: hidden;
   opacity: 0;
@@ -406,7 +419,7 @@ p {
   overflow: hidden;
   isolation: isolate;
   background:
-    radial-gradient(90% 55% at 50% 100%, rgba(216, 178, 106, 0.2), transparent 70%),
+    radial-gradient(90% 55% at 50% 100%, rgb(var(--gold-rgb) / 0.2), transparent 70%),
     linear-gradient(180deg, var(--forest) 0%, var(--forest) 45%, var(--night) 100%);
 }
 
@@ -436,6 +449,7 @@ p {
   --logo: min(460px, 82vw, 48svh);
   width: var(--logo);
   margin: calc(var(--logo) * -0.1) 0 calc(var(--logo) * -0.14);
+  filter: var(--logo-filter);
   -webkit-mask-image: radial-gradient(closest-side, #000 70%, transparent 100%);
   mask-image: radial-gradient(closest-side, #000 70%, transparent 100%);
 }
@@ -492,7 +506,7 @@ p {
   border-radius: 50%;
   background:
     radial-gradient(circle, transparent 37.6%, var(--line-soft) 37.7% 37.9%, transparent 38% 41.6%, var(--line-soft) 41.7% 41.85%, transparent 42%),
-    radial-gradient(circle at 50% 0%, #0d4a37, #052b1f 40%, var(--night) 62%);
+    radial-gradient(circle at 50% 0%, rgb(var(--surface-2-rgb)), rgb(var(--surface-rgb)) 40%, var(--night) 62%);
   box-shadow: 0 -1px 0 var(--line);
 }
 
@@ -578,13 +592,15 @@ p {
 .tarot {
   position: relative;
   display: block;
+  /* card art keeps the logo green, muted to sit with the slate palette */
+  filter: saturate(0.55);
   aspect-ratio: 5 / 8;
   border-radius: var(--radius-card);
   background:
     radial-gradient(120% 80% at 50% 0%, #11604a, transparent 70%),
     linear-gradient(170deg, #0b4a37, #04261b);
   box-shadow:
-    0 0 0 1px rgba(236, 215, 166, 0.35),
+    0 0 0 1px rgb(var(--gold-soft-rgb) / 0.35),
     0 18px 40px -14px rgba(0, 0, 0, 0.75);
   color: var(--gold);
   overflow: hidden;
@@ -614,7 +630,7 @@ p {
 .tarot__rays {
   position: absolute;
   inset: 0;
-  background: repeating-conic-gradient(from 0deg at 50% 44%, rgba(216, 178, 106, 0.22) 0 1.2deg, transparent 1.2deg 12deg);
+  background: repeating-conic-gradient(from 0deg at 50% 44%, rgb(var(--gold-rgb) / 0.22) 0 1.2deg, transparent 1.2deg 12deg);
   -webkit-mask-image: radial-gradient(circle at 50% 44%, #000 0 12%, transparent 46%);
   mask-image: radial-gradient(circle at 50% 44%, #000 0 12%, transparent 46%);
 }
@@ -632,7 +648,7 @@ p {
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: drop-shadow(0 0 6px rgba(216, 178, 106, 0.35));
+  filter: drop-shadow(0 0 6px rgb(var(--gold-rgb) / 0.35));
 }
 
 .tarot__star {
@@ -662,8 +678,8 @@ p {
 /* Card back */
 .tarot--back {
   background:
-    repeating-linear-gradient(45deg, transparent 0 13px, rgba(216, 178, 106, 0.16) 13px 14px),
-    repeating-linear-gradient(-45deg, transparent 0 13px, rgba(216, 178, 106, 0.16) 13px 14px),
+    repeating-linear-gradient(45deg, transparent 0 13px, rgb(var(--gold-rgb) / 0.16) 13px 14px),
+    repeating-linear-gradient(-45deg, transparent 0 13px, rgb(var(--gold-rgb) / 0.16) 13px 14px),
     linear-gradient(170deg, #0b4a37, #04261b);
 }
 
@@ -672,7 +688,7 @@ p {
   padding: 6%;
   border-radius: 50%;
   background: #063626;
-  box-shadow: 0 0 0 1px var(--gold), 0 0 0 6px #063626, 0 0 0 7px rgba(216, 178, 106, 0.5);
+  box-shadow: 0 0 0 1px var(--gold), 0 0 0 6px #063626, 0 0 0 7px rgb(var(--gold-rgb) / 0.5);
   color: var(--white);
   top: 50%;
 }
@@ -733,7 +749,7 @@ p {
 }
 
 .section--glow {
-  background: radial-gradient(70% 50% at 50% 0%, rgba(15, 82, 64, 0.55), transparent 70%);
+  background: radial-gradient(70% 50% at 50% 0%, rgb(var(--surface-2-rgb) / 0.55), transparent 70%);
 }
 
 /* Diamond icon frame (from the reference's section markers) */
@@ -746,7 +762,7 @@ p {
   border: 1px solid var(--gold);
   transform: rotate(45deg);
   color: var(--gold);
-  box-shadow: 0 0 0 5px rgba(216, 178, 106, 0.08);
+  box-shadow: 0 0 0 5px rgb(var(--gold-rgb) / 0.08);
 }
 
 .diamond .icon {
@@ -779,8 +795,8 @@ p {
   border: 1px solid var(--line);
   border-radius: var(--radius-panel);
   background:
-    radial-gradient(100% 90% at 100% 0%, rgba(15, 82, 64, 0.7), transparent 70%),
-    linear-gradient(180deg, rgba(11, 68, 51, 0.6), rgba(3, 29, 20, 0.55));
+    radial-gradient(100% 90% at 100% 0%, rgb(var(--surface-2-rgb) / 0.7), transparent 70%),
+    linear-gradient(180deg, rgb(var(--surface-rgb) / 0.6), rgb(var(--bg-rgb) / 0.55));
 }
 
 .panel__card {
@@ -830,7 +846,7 @@ p {
   min-height: 44px;
   font-weight: 600;
   color: var(--gold-soft);
-  text-decoration-color: rgba(236, 215, 166, 0.4);
+  text-decoration-color: rgb(var(--gold-soft-rgb) / 0.4);
 }
 
 .panel__link:hover {
@@ -878,7 +894,7 @@ p {
   padding: 12px 14px;
   border: 1px solid var(--line-soft);
   border-radius: 14px;
-  background: rgba(3, 29, 20, 0.45);
+  background: rgb(var(--bg-rgb) / 0.45);
 }
 
 .weekend__date {
@@ -887,7 +903,7 @@ p {
   width: 64px;
   padding: 6px 4px;
   border-radius: 10px;
-  background: rgba(216, 178, 106, 0.1);
+  background: rgb(var(--gold-rgb) / 0.1);
   box-shadow: inset 0 0 0 1px var(--line);
   color: var(--gold-soft);
   font-size: 0.8rem;
@@ -967,8 +983,8 @@ p {
   position: relative;
   padding: 5%;
   border-radius: 18px;
-  background: linear-gradient(170deg, #0b4a37, #04261b);
-  box-shadow: 0 0 0 1px rgba(236, 215, 166, 0.4), 0 30px 60px -24px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(170deg, rgb(var(--surface-2-rgb)), rgb(var(--bg-rgb)));
+  box-shadow: 0 0 0 1px rgb(var(--gold-soft-rgb) / 0.4), 0 30px 60px -24px rgba(0, 0, 0, 0.8);
 }
 
 .portrait__frame::before {
@@ -1083,7 +1099,7 @@ p {
   border: 1px solid var(--line);
   border-radius: var(--radius-panel);
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(11, 68, 51, 0.65), rgba(3, 29, 20, 0.6));
+  background: linear-gradient(180deg, rgb(var(--surface-rgb) / 0.65), rgb(var(--bg-rgb) / 0.6));
 }
 
 @media (min-width: 760px) {
@@ -1102,7 +1118,7 @@ p {
   justify-items: center;
   gap: 2px;
   padding: 20px;
-  background: rgba(216, 178, 106, 0.08);
+  background: rgb(var(--gold-rgb) / 0.08);
   border-bottom: 1px solid var(--line);
   text-align: center;
   color: var(--gold-soft);
@@ -1172,7 +1188,7 @@ p {
   padding: clamp(16px, 3vw, 28px);
   border: 1px solid var(--line);
   border-radius: var(--radius-panel);
-  background: linear-gradient(180deg, rgba(11, 68, 51, 0.6), rgba(3, 29, 20, 0.55));
+  background: linear-gradient(180deg, rgb(var(--surface-rgb) / 0.6), rgb(var(--bg-rgb) / 0.55));
 }
 
 .cal__head {
@@ -1234,11 +1250,11 @@ p {
   min-height: 38px;
   border-radius: 12px;
   font-size: 0.95rem;
-  color: rgba(198, 218, 205, 0.75);
+  color: rgb(var(--mist-rgb) / 0.75);
 }
 
 .cal__day.is-today {
-  box-shadow: inset 0 0 0 1px rgba(198, 218, 205, 0.5);
+  box-shadow: inset 0 0 0 1px rgb(var(--mist-rgb) / 0.5);
 }
 
 .cal__day.is-past {
@@ -1248,7 +1264,7 @@ p {
 button.cal__day {
   padding: 0 0 8px;
   border: 1px solid var(--line);
-  background: rgba(216, 178, 106, 0.1);
+  background: rgb(var(--gold-rgb) / 0.1);
   color: var(--white);
   font-family: var(--font-display);
   font-size: 1.25rem;
@@ -1382,7 +1398,7 @@ button.cal__day[aria-pressed="true"] .cal__dot--reading {
 
 .cal__item:hover {
   border-color: var(--gold);
-  background: rgba(11, 68, 51, 0.55);
+  background: rgb(var(--surface-rgb) / 0.55);
 }
 
 .cal__tag {
@@ -1412,16 +1428,16 @@ button.cal__day[aria-pressed="true"] .cal__dot--reading {
   border: 1px solid var(--line);
   border-radius: var(--radius-panel);
   background:
-    radial-gradient(100% 70% at 100% 0%, rgba(15, 82, 64, 0.9), transparent 70%),
+    radial-gradient(100% 70% at 100% 0%, rgb(var(--surface-2-rgb) / 0.9), transparent 70%),
     var(--night);
   color: var(--mist);
-  box-shadow: 0 0 0 6px rgba(216, 178, 106, 0.08), 0 40px 80px -20px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 0 6px rgb(var(--gold-rgb) / 0.08), 0 40px 80px -20px rgba(0, 0, 0, 0.9);
   overflow: auto;
   overscroll-behavior: contain;
 }
 
 .cal-modal::backdrop {
-  background: rgba(2, 15, 10, 0.72);
+  background: rgb(var(--bg-rgb) / 0.72);
   backdrop-filter: blur(4px);
 }
 
@@ -1688,13 +1704,13 @@ button.cal__day[aria-pressed="true"] .cal__dot--reading {
   border-radius: 20px;
   text-decoration: none;
   color: var(--mist);
-  background: rgba(11, 68, 51, 0.35);
+  background: rgb(var(--surface-rgb) / 0.35);
   transition: border-color var(--dur-fast), background-color var(--dur-fast), transform var(--dur-med) var(--ease-out);
 }
 
 .social:hover {
   border-color: var(--gold);
-  background: rgba(11, 68, 51, 0.6);
+  background: rgb(var(--surface-rgb) / 0.6);
   transform: translateY(-3px);
 }
 
@@ -1728,7 +1744,7 @@ button.cal__day[aria-pressed="true"] .cal__dot--reading {
   text-align: center;
   overflow: hidden;
   background:
-    radial-gradient(60% 70% at 50% 100%, rgba(216, 178, 106, 0.18), transparent 70%),
+    radial-gradient(60% 70% at 50% 100%, rgb(var(--gold-rgb) / 0.18), transparent 70%),
     linear-gradient(180deg, var(--night), var(--forest));
 }
 
@@ -1797,7 +1813,7 @@ button.cal__day[aria-pressed="true"] .cal__dot--reading {
 
 .footer {
   padding: 56px 0 40px;
-  background: var(--forest);
+  background: var(--footer-bg);
   border-top: 1px solid var(--line-soft);
   font-size: 0.95rem;
 }
@@ -1858,7 +1874,7 @@ button.cal__day[aria-pressed="true"] .cal__dot--reading {
   text-align: center;
   overflow: hidden;
   background:
-    radial-gradient(70% 80% at 50% 0%, rgba(15, 82, 64, 0.9), transparent 70%),
+    radial-gradient(70% 80% at 50% 0%, rgb(var(--surface-2-rgb) / 0.9), transparent 70%),
     var(--night);
 }
 
@@ -1898,7 +1914,7 @@ button.cal__day[aria-pressed="true"] .cal__dot--reading {
   padding: 28px;
   border: 1px solid var(--line);
   border-radius: 22px;
-  background: rgba(11, 68, 51, 0.4);
+  background: rgb(var(--surface-rgb) / 0.4);
 }
 
 .reading h3 {
@@ -1918,7 +1934,7 @@ button.cal__day[aria-pressed="true"] .cal__dot--reading {
   padding: 8px;
   border-radius: 24px;
   background: #ffffff;
-  box-shadow: 0 0 0 1px var(--gold), 0 0 0 7px rgba(216, 178, 106, 0.12), 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 0 1px var(--gold), 0 0 0 7px rgb(var(--gold-rgb) / 0.12), 0 30px 60px -30px rgba(0, 0, 0, 0.8);
   overflow: hidden;
 }
 
@@ -1981,7 +1997,7 @@ button.cal__day[aria-pressed="true"] .cal__dot--reading {
   margin: 40px auto 0;
   padding: 18px 22px;
   border-left: 2px solid var(--gold);
-  background: rgba(216, 178, 106, 0.07);
+  background: rgb(var(--gold-rgb) / 0.07);
   border-radius: 0 12px 12px 0;
 }
 

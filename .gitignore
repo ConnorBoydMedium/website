@@ -1,4 +1,4 @@
-# Built site and tools (recreated on every publish)
+﻿# Built site and tools (recreated on every publish)
 _site/
 node_modules/
 
@@ -9,6 +9,3 @@ Videos/
 
 # Local editor settings
 .claude/
-
-# Local-only style preview
-src/preview.njk

@@ -16,10 +16,6 @@ const todayUTC = () => {
 };
 
 export default function (eleventyConfig) {
-  // Only src/ is built, so .gitignore isn't needed here; this lets local-only
-  // pages (like the style preview, which never reaches GitHub) work in preview
-  eleventyConfig.setUseGitIgnore(false);
-
   // Changes on every publish, so browsers fetch fresh styles and scripts
   eleventyConfig.addGlobalData('version', () => Date.now().toString(36));
 
