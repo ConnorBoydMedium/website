@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Figtree:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css?v={{ version }}">
   <script>document.documentElement.classList.add('js');window.SITE={booking:{{ settings.calendly_url | dump | safe }},whatsapp:{{ settings.phone_international | dump | safe }}};</script>
 </head>
 <body>
@@ -108,7 +108,7 @@
     </div>
   </footer>
 
-  <script src="/js/main.js" defer></script>
+  <script src="/js/main.js?v={{ version }}" defer></script>
   {% if nav == "book" %}<script src="https://assets.calendly.com/assets/external/widget.js" async></script>{% endif %}
 </body>
 </html>

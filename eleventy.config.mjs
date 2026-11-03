@@ -16,6 +16,9 @@ const todayUTC = () => {
 };
 
 export default function (eleventyConfig) {
+  // Changes on every publish, so browsers fetch fresh styles and scripts
+  eleventyConfig.addGlobalData('version', () => Date.now().toString(36));
+
   eleventyConfig.addPassthroughCopy('src/css');
   eleventyConfig.addPassthroughCopy('src/js');
   eleventyConfig.addPassthroughCopy({ 'src/assets/img/logo.jpg': 'assets/img/logo.jpg' });

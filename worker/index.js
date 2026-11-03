@@ -1,6 +1,6 @@
-// Cloudflare Pages Function: GET /api/video-days
-// Returns the days that have free video-reading slots on Calendly, as
-// ["YYYY-MM-DD", ...]. The Events calendar reads this to show video days.
+// Cloudflare Worker: serves the built site from _site, plus one live endpoint.
+//   GET /api/video-days  ->  ["YYYY-MM-DD", ...] days with free video-reading
+//   slots on Calendly. The Events calendar reads this to show video days.
 // Calendly doesn't let browsers ask directly, so the server asks for them.
 
 // From the public booking page calendly.com/bookings-connorboydmedium/30min
@@ -21,9 +21,9 @@ async function fetchRange(start, end) {
   return (data.days || []).filter((d) => d.status === 'available').map((d) => d.date);
 }
 
-export async function onRequestGet(context) {
+async function videoDays(request, ctx) {
   const cache = caches.default;
-  const cacheKey = new Request(new URL('/api/video-days', context.request.url).toString());
+  const cacheKey = new Request(new URL('/api/video-days', request.url).toString());
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
 
@@ -45,7 +45,7 @@ export async function onRequestGet(context) {
         'Cache-Control': `public, max-age=${CACHE_SECONDS}`,
       },
     });
-    context.waitUntil(cache.put(cacheKey, response.clone()));
+    ctx.waitUntil(cache.put(cacheKey, response.clone()));
     return response;
   } catch (err) {
     // The calendar simply shows no video days if Calendly can't be reached
@@ -55,3 +55,11 @@ export async function onRequestGet(context) {
     });
   }
 }
+
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    if (url.pathname === '/api/video-days') return videoDays(request, ctx);
+    return env.ASSETS.fetch(request);
+  },
+};
