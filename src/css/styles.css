@@ -433,7 +433,7 @@ p {
 .hero__logo {
   /* the logo image has empty space around the artwork; trim it in
      proportion to the logo's own size, not the screen width */
-  --logo: min(330px, 66vw, 34svh);
+  --logo: min(460px, 82vw, 48svh);
   width: var(--logo);
   margin: calc(var(--logo) * -0.1) 0 calc(var(--logo) * -0.14);
   -webkit-mask-image: radial-gradient(closest-side, #000 70%, transparent 100%);
