@@ -928,6 +928,14 @@ p {
   white-space: nowrap;
 }
 
+.weekend[hidden] {
+  display: none;
+}
+
+.weekends__more {
+  margin-top: 14px;
+}
+
 /* Two-day dates ("14–15") are smaller so they fit the box on one line */
 .weekend__day--range {
   font-size: 1.3rem;

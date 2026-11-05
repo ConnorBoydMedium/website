@@ -48,6 +48,21 @@ nav: home
 
     <div class="panels panels--two">
       <article class="panel panel--span">
+        {{ m.flipCard("ball", "The Distance", "panel__card") }}
+        <div class="panel__head">
+          <span class="diamond" aria-hidden="true">{{ m.icon("video") }}</span>
+          <h3>Video readings</h3>
+        </div>
+        <ul class="panel__meta">
+          <li>{{ m.icon("clock") }} {{ home.video_duration }}</li>
+          <li>{{ m.icon("ticket") }} {{ home.video_price }}</li>
+          <li>{{ m.icon("video") }} From your own home</li>
+        </ul>
+        <p>{{ home.video_text }}</p>
+        <a class="panel__link" href="/book.html#calendar">Choose a time</a>
+      </article>
+
+      <article class="panel panel--span">
         {{ m.flipCard("eye", "The Reading", "panel__card") }}
         <div class="panel__head">
           <span class="diamond" aria-hidden="true">{{ m.icon("sparkle") }}</span>
@@ -65,21 +80,6 @@ nav: home
       </article>
 
       <article class="panel">
-        {{ m.flipCard("ball", "The Distance", "panel__card") }}
-        <div class="panel__head">
-          <span class="diamond" aria-hidden="true">{{ m.icon("video") }}</span>
-          <h3>Video readings</h3>
-        </div>
-        <ul class="panel__meta">
-          <li>{{ m.icon("clock") }} {{ home.video_duration }}</li>
-          <li>{{ m.icon("ticket") }} {{ home.video_price }}</li>
-          <li>{{ m.icon("video") }} From your own home</li>
-        </ul>
-        <p>{{ home.video_text }}</p>
-        <a class="panel__link" href="/book.html#calendar">Choose a time</a>
-      </article>
-
-      <article class="panel">
         {{ m.flipCard("candle", "The Gathering", "panel__card") }}
         <div class="panel__head">
           <span class="diamond" aria-hidden="true">{{ m.icon("users") }}</span>
@@ -92,7 +92,7 @@ nav: home
         <a class="panel__link" href="/events.html">See the dates</a>
       </article>
 
-      <article class="panel panel--span">
+      <article class="panel">
         {{ m.flipCard("home", "The Hearth", "panel__card") }}
         <div class="panel__head">
           <span class="diamond" aria-hidden="true">{{ m.icon("store") }}</span>

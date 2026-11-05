@@ -12,6 +12,29 @@ const BOOKING_URL = SITE.booking || 'https://calendly.com/bookings-connorboydmed
   });
 })();
 
+/* Weekend reading lists: show the next 6 dates, with a button for the rest */
+document.querySelectorAll('.weekends').forEach((list) => {
+  const SHOWN = 6;
+  const extra = [...list.children].slice(SHOWN);
+  if (!extra.length) return;
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'btn btn--ghost weekends__more';
+  button.setAttribute('aria-expanded', 'false');
+  const setOpen = (open) => {
+    extra.forEach((li) => { li.hidden = !open; });
+    button.setAttribute('aria-expanded', String(open));
+    button.textContent = open ? 'Show fewer dates' : `Show ${extra.length} more dates`;
+  };
+  button.addEventListener('click', () => {
+    const open = button.getAttribute('aria-expanded') !== 'true';
+    setOpen(open);
+    if (!open) list.scrollIntoView({ block: 'nearest' });
+  });
+  setOpen(false);
+  list.after(button);
+});
+
 document.querySelectorAll('[data-year]').forEach((el) => {
   el.textContent = new Date().getFullYear();
 });
