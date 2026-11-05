@@ -107,7 +107,15 @@ content:
         list: { collapsible: { collapsed: true, summary: "{source}: {quote}" } }
         fields:
           - { name: quote, label: Quote, type: text }
-          - { name: source, label: "Who said it (for example: Client review)", type: string }
+          - { name: source, label: "Who said it (for example: Raychel L.)", type: string }
+          - name: type
+            label: What they came to
+            type: select
+            options:
+              values:
+                - { name: "1-2-1 reading", label: "1-2-1 reading" }
+                - { name: "Video reading", label: "Video reading" }
+                - { name: "Evening of mediumship", label: "Evening of mediumship" }
       - { name: evenings_intro, label: "Evenings of mediumship: intro", type: text }
       - { name: work_intro, label: "Work with me: intro", type: text }
       - name: work_ways

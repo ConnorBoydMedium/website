@@ -138,15 +138,22 @@ nav: home
     <div class="section__head">
       <h2 id="reviews-title">Kind words</h2>
     </div>
-    <div class="reviews">
+  </div>
+  {# Two identical copies side by side make the reel loop seamlessly; the second is hidden from screen readers #}
+  <div class="reel" style="--n: {{ home.reviews.length }}">
+    <div class="reel__track">
+      {% for copy in [1, 2] %}
+      <div class="reviews"{% if copy == 2 %} aria-hidden="true"{% endif %}>
       {% for r in home.reviews %}
       <figure class="review">
         <div class="review__stars" role="img" aria-label="5 out of 5 stars">
           {% for s in range(5) %}<svg aria-hidden="true"><use href="#i-rating"/></svg>{% endfor %}
         </div>
         <blockquote><p>{{ r.quote }}</p></blockquote>
-        <figcaption>{{ r.source }}</figcaption>
+        <figcaption>{{ r.source }}{% if r.type %}<span class="review__type">{{ r.type }}</span>{% endif %}</figcaption>
       </figure>
+      {% endfor %}
+      </div>
       {% endfor %}
     </div>
   </div>

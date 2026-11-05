@@ -15,6 +15,7 @@ const BOOKING_URL = SITE.booking || 'https://calendly.com/bookings-connorboydmed
 /* Weekend reading lists: show the next 6 dates, with a button for the rest */
 document.querySelectorAll('.weekends').forEach((list) => {
   const SHOWN = 6;
+  const noun = 'dates';
   const extra = [...list.children].slice(SHOWN);
   if (!extra.length) return;
   const button = document.createElement('button');
@@ -24,7 +25,7 @@ document.querySelectorAll('.weekends').forEach((list) => {
   const setOpen = (open) => {
     extra.forEach((li) => { li.hidden = !open; });
     button.setAttribute('aria-expanded', String(open));
-    button.textContent = open ? 'Show fewer dates' : `Show ${extra.length} more dates`;
+    button.textContent = open ? `Show fewer ${noun}` : `Show ${extra.length} more ${noun}`;
   };
   button.addEventListener('click', () => {
     const open = button.getAttribute('aria-expanded') !== 'true';
