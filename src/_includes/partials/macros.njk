@@ -55,7 +55,7 @@
 <ul class="weekends weekends--cols" aria-labelledby="weekends-title">
   {% for e in readings %}
   <li class="weekend" data-end="{{ e | endDate }}">
-    <span class="weekend__date"><span>{{ e | dayShortLabel }}</span><span class="weekend__day">{{ e | dateRange }}</span><span>{{ e | monthShort }}</span></span>
+    <span class="weekend__date"><span>{{ e | dayShortLabel }}</span><span class="weekend__day{% if e.end and e.end != e.start %} weekend__day--range{% endif %}">{{ e | dateRange }}</span><span>{{ e | monthShort }}</span></span>
     <span class="weekend__info"><strong>{{ e.title }}</strong><span>{{ e.list_line or e.address }}</span></span>
   </li>
   {% endfor %}
