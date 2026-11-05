@@ -119,6 +119,19 @@
     },
     {
       "type": "reading",
+      "title": "Yule Market, Huddersfield",
+      "start": "2026-12-12",
+      "end": "2026-12-13",
+      "label": "",
+      "time": "",
+      "price": "",
+      "address": "Greenhead Masonic Hall, 26 Greenhead Road, Huddersfield, HD1 4EN",
+      "list_line": "Greenhead Masonic Hall, Huddersfield, HD1 4EN",
+      "tickets_url": "",
+      "note": ""
+    },
+    {
+      "type": "reading",
       "title": "Matlock Mind Body Spirit",
       "start": "2027-01-30",
       "end": "",
