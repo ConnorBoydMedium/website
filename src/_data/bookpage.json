@@ -22,6 +22,7 @@
       "Payment is taken in full when you book.",
       "Changes and refunds: any booking can be transferred to another slot with at least 24 hours' notice. If you cancel with less notice than that, I may not be able to transfer your booking."
     ],
+    "privacy_note": "The booking calendar is provided by Calendly, which will ask before setting its own cookies.",
     "agree_label": "I'm 18 or over, and I've read and understood the above.",
     "button_label": "Continue to booking"
   }

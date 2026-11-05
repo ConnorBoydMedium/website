@@ -21,6 +21,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy('src/css');
   eleventyConfig.addPassthroughCopy('src/js');
+  eleventyConfig.addPassthroughCopy('src/fonts');
   eleventyConfig.addPassthroughCopy({ 'src/assets/img/logo.jpg': 'assets/img/logo.jpg' });
 
   // Every <img> on the site gets resized and converted to fast formats at build time,

@@ -1,0 +1,73 @@
+{
+  "intro": "How I look after the personal information you share with me when you visit this website, book a reading or get in touch.",
+  "updated": "November 2026",
+  "sections": [
+    {
+      "heading": "Who I am",
+      "paragraphs": [
+        "This website is run by Connor Boyd, trading as Connor Boyd Spiritual Medium. I'm responsible for the personal information described here. If you have any questions, email bookings@connorboydmedium.co.uk."
+      ],
+      "items": []
+    },
+    {
+      "heading": "What I collect",
+      "paragraphs": [
+        "The website itself doesn't ask you to fill anything in. I only receive information when you book or contact me:"
+      ],
+      "items": [
+        "Video readings: your name, email address, the time you book and any answers you give on the booking form, through Calendly.",
+        "Payments: taken by Calendly's payment partner. I see that you've paid, but never your card details.",
+        "Messages: anything you send me by WhatsApp, email, Facebook or Instagram, including your name and contact details.",
+        "Event tickets: bought through Eventbrite, which shares your name and email with me so I know who's coming.",
+        "During a reading: anything personal you choose to share, which can include details about your health, relationships or loved ones who have passed. I don't record readings."
+      ]
+    },
+    {
+      "heading": "Why I use it",
+      "paragraphs": [],
+      "items": [
+        "To arrange, confirm, move and carry out your reading or event booking (this is needed for our agreement).",
+        "To answer your questions and messages (my legitimate interest in replying to you).",
+        "To keep financial records that the law requires.",
+        "Sensitive details you share during a reading are used only for that reading, and only because you've chosen to share them."
+      ]
+    },
+    {
+      "heading": "Who it's shared with",
+      "paragraphs": [
+        "I never sell your information or use it for advertising. It's handled only by the services I use to run my bookings and messages: Calendly and its payment partner, Eventbrite, Google (email), WhatsApp and Meta (Facebook and Instagram), and Cloudflare (which hosts and protects this website). Some of these companies are based outside the UK; they protect your information with safeguards approved under UK law."
+      ],
+      "items": []
+    },
+    {
+      "heading": "How long I keep it",
+      "paragraphs": [
+        "Booking details and messages are kept for as long as they're useful for your bookings, normally no more than two years after your last contact. Payment records are kept for six years, because tax law requires it."
+      ],
+      "items": []
+    },
+    {
+      "heading": "Cookies",
+      "paragraphs": [
+        "This website doesn't use advertising or tracking cookies, and its fonts are hosted here rather than by Google. Cloudflare sets one small security cookie to keep out bots; it's strictly necessary, so it doesn't need your consent.",
+        "The video booking calendar is provided by Calendly. It only loads when you choose to book, and Calendly then asks for your consent to its own cookies. Links to Eventbrite, WhatsApp, Facebook and Instagram take you to those sites, which have their own privacy policies."
+      ],
+      "items": []
+    },
+    {
+      "heading": "Your rights",
+      "paragraphs": [
+        "You can ask me for a copy of the information I hold about you, or ask me to correct it, delete it, stop using it or pass it to you in a portable form. Email bookings@connorboydmedium.co.uk and I'll reply within one month.",
+        "If you're unhappy with how I've handled your information, please tell me first so I can put it right. You can also complain to the Information Commissioner's Office at ico.org.uk or on 0303 123 1113."
+      ],
+      "items": []
+    },
+    {
+      "heading": "Age",
+      "paragraphs": [
+        "My readings and events are for adults aged 18 and over, and I don't knowingly collect information from anyone younger."
+      ],
+      "items": []
+    }
+  ]
+}

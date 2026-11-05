@@ -61,7 +61,7 @@ nav: book
       <p class="section__intro">{{ bookpage.calendar_intro }}</p>
     </div>
     {# Calendly loads here only after the visitor agrees to the terms #}
-    <div class="calendar-gate" data-calendly-gate data-url="{{ settings.calendly_url }}?primary_color=1c2f29&hide_gdpr_banner=1">
+    <div class="calendar-gate" data-calendly-gate data-url="{{ settings.calendly_url }}?primary_color=1c2f29">
       <p>Have a quick read of what to expect, then choose a day and time.</p>
       <button class="btn btn--gold" type="button" data-terms-open>{{ m.icon("calendar") }} Choose a time</button>
       <noscript><p>Booking needs JavaScript. You can also <a href="{{ settings.calendly_url }}">open the booking page</a>.</p></noscript>

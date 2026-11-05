@@ -21,6 +21,7 @@
       {% for item in t.terms %}<li>{{ item }}</li>
       {% endfor %}
     </ul>
+    <p class="terms-modal__privacy">{{ t.privacy_note }} <a href="/privacy.html" target="_blank" rel="noopener">Privacy policy</a></p>
     <label class="terms-modal__agree">
       <input type="checkbox" data-terms-agree>
       <span>{{ t.agree_label }}</span>

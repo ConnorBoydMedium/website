@@ -11,9 +11,8 @@
   <meta property="og:description" content="{{ description }}">
   <meta property="og:image" content="/assets/img/logo.jpg">
   <link rel="icon" href="/assets/img/logo.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Figtree:wght@400;500;600&display=swap">
+  <link rel="preload" href="/fonts/cormorant-garamond-normal-1.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/fonts.css?v={{ version }}">
   <link rel="stylesheet" href="/css/styles.css?v={{ version }}">
   <script>document.documentElement.classList.add('js');window.SITE={booking:{{ settings.calendly_url | dump | safe }},whatsapp:{{ settings.whatsapp_username | dump | safe }}};</script>
 </head>
@@ -103,7 +102,7 @@
       </div>
       <div class="footer__note">
         <p>{{ home.footer_note }}</p>
-        <p>&copy; <span data-year>2026</span> Connor Boyd Spiritual Medium</p>
+        <p>&copy; <span data-year>2026</span> Connor Boyd Spiritual Medium · <a href="/privacy.html">Privacy policy</a></p>
       </div>
     </div>
   </footer>

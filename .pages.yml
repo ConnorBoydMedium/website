@@ -160,8 +160,26 @@ content:
           - { name: needs, label: "What you need (one per line)", type: string, list: true }
           - { name: terms_title, label: "Terms heading", type: string }
           - { name: terms, label: "Terms (one per line)", type: text, list: true }
+          - { name: privacy_note, label: "Line before the privacy policy link", type: text }
           - { name: agree_label, label: "Tick-box wording", type: string }
           - { name: button_label, label: "Button wording", type: string }
+
+  - name: privacy
+    label: Privacy policy
+    type: file
+    path: src/_data/privacy.json
+    format: json
+    fields:
+      - { name: intro, label: "Intro under the heading", type: text }
+      - { name: updated, label: "Last updated (for example: November 2026)", type: string }
+      - name: sections
+        label: Sections
+        type: object
+        list: { collapsible: { collapsed: true, summary: "{heading}" } }
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: paragraphs, label: Paragraphs, type: text, list: true }
+          - { name: items, label: "Bullet points (optional)", type: text, list: true }
 
   - name: eventspage
     label: Events page

@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+permalink: /privacy.html
+title: Privacy policy | Connor Boyd, Spiritual Medium
+description: How Connor Boyd Spiritual Medium looks after your personal information.
+nav: privacy
+---
+<header class="page-head">
+  <div class="container">
+    <h1>Privacy policy</h1>
+    <p>{{ privacy.intro }}</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container policy">
+    {% for s in privacy.sections %}
+      <h2>{{ s.heading }}</h2>
+      {% for p in s.paragraphs %}<p>{{ p }}</p>
+      {% endfor %}
+      {% if s.items and s.items.length %}
+        <ul class="terms-modal__list">
+          {% for item in s.items %}<li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endfor %}
+    <p class="policy__updated">Last updated: {{ privacy.updated }}</p>
+  </div>
+</section>
