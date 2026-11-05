@@ -574,7 +574,8 @@ p {
   display: block;
   margin-top: 10px;
   text-align: center;
-  font-size: clamp(0.72rem, 1.6vw, 0.95rem);
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
   font-weight: 500;
   color: var(--white);
   line-height: 1.2;
@@ -1008,13 +1009,47 @@ p {
   position: relative;
   padding: 5%;
   border-radius: 18px;
-  background: linear-gradient(170deg, rgb(var(--surface-2-rgb)), rgb(var(--bg-rgb)));
-  box-shadow: 0 0 0 1px rgb(var(--gold-soft-rgb) / 0.4), 0 30px 60px -24px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 0 1px rgb(var(--gold-soft-rgb) / 0.35), 0 30px 60px -24px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+/* Same green, gold rays and muting as the tarot cards; a separate layer so the photo isn't muted too */
+.portrait__bg {
+  position: absolute;
+  inset: 0;
+  filter: saturate(0.55);
+  background:
+    radial-gradient(120% 80% at 50% 0%, #11604a, transparent 70%),
+    linear-gradient(170deg, #0b4a37, #04261b);
+}
+
+.portrait__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(from 0deg at 50% 93%, rgb(var(--gold-rgb) / 0.22) 0 1.2deg, transparent 1.2deg 12deg);
+  -webkit-mask-image: radial-gradient(circle at 50% 93%, #000 0 8%, transparent 40%);
+  mask-image: radial-gradient(circle at 50% 93%, #000 0 8%, transparent 40%);
+}
+
+.portrait img,
+.portrait__name {
+  position: relative;
+}
+
+.portrait__star {
+  width: 0.6em;
+  height: 0.6em;
+  margin: 0 0.5em;
+  vertical-align: 0.1em;
+  fill: var(--gold);
+  opacity: 0.85;
 }
 
 .portrait__frame::before {
   content: "";
   position: absolute;
+  z-index: 1;
   inset: 2.5%;
   border: 1px solid var(--gold);
   border-radius: 12px;
