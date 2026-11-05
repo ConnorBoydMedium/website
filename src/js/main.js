@@ -173,7 +173,7 @@ if (termsDialog && typeof termsDialog.showModal === 'function') {
 
 /* "WhatsApp to book" buttons on reading-day cards: fill in a ready-made
    message naming the event and date, built from the card itself. */
-const WHATSAPP_USERNAME = SITE.whatsapp || 'psychicmediumconnor';
+const WHATSAPP_USERNAME = SITE.whatsapp || 'connorboydmedium';
 document.querySelectorAll('[data-whatsapp-book]').forEach((a) => {
   const card = a.closest('.event');
   if (!card) return;

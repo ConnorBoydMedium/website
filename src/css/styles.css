@@ -1023,6 +1023,28 @@ p {
     linear-gradient(170deg, #0b4a37, #04261b);
 }
 
+/* sunburst behind the head, like the icon rays on the tarot cards */
+.portrait__bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(from 0deg at 50% 30%, rgb(var(--gold-rgb) / 0.22) 0 1.2deg, transparent 1.2deg 12deg);
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, #000 0 14%, transparent 52%);
+  mask-image: radial-gradient(circle at 50% 30%, #000 0 14%, transparent 52%);
+}
+
+.portrait__topstar {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 7%;
+  width: 6%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  fill: var(--gold);
+  opacity: 0.85;
+}
+
 .portrait__bg::after {
   content: "";
   position: absolute;
